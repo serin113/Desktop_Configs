@@ -1,0 +1,23 @@
+[Desktop Entry]
+Type=Action
+TargetLocation=true
+Icon[en_PH]=gnome-terminal
+Icon[en]=gnome-terminal
+Icon[C]=gnome-terminal
+ToolbarLabel[en_PH]=Open Terminal
+ToolbarLabel[en]=Open Terminal
+ToolbarLabel[C]=Open Terminal
+Name[en_PH]=Open Terminal
+Name[en]=Open Terminal
+Name[C]=Open Terminal
+Profiles=profile-zero;
+
+TargetContext=false
+
+[X-Action-Profile profile-zero]
+Exec=xfce4-terminal --working-directory=%f 
+Name[en_PH]=Default profile
+Name[en]=Default profile
+Name[C]=Default profile
+Path=%D
+ExecutionMode=Terminal
