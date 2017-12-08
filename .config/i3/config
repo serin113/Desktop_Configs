@@ -101,7 +101,7 @@ bindsym $mod+Shift+Control+Right move workspace next
 bindsym --release $mod+Print exec "$HOME/scripts/scrot"
 #bindcode 135 exec --no-startup-id tilix -q
 #bindsym --release $mod+m bar mode toggle top-bar
-bindcode 135 exec --no-startup-id xfce4-terminal --drop-down
+bindcode 135 exec --no-startup-id xfce4-terminal --drop-down && i3-msg move down 33
 
 
 
