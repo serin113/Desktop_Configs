@@ -1,0 +1,223 @@
+<style>
+	table {
+		width: 100%;
+		margin: 0;
+	}
+	td {
+		border: 1px solid;
+		margin: 0;
+		border-color: black;
+		padding: 5px;
+	}
+	tr {
+		border: 1px solid;
+		margin: 0;
+		border-color: black;
+	}
+	html, body {
+		margin: 0;
+		padding: 0;
+	}
+</style>
+<table>
+<tr>
+	<td>
+	mod+f
+	</td>
+	<td>
+	toggle fullscreen
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+r
+	</td>
+	<td>
+	resize mode
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+e
+	</td>
+	<td>
+	default
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+s
+	</td>
+	<td>
+	stacking
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+w
+	</td>
+	<td>
+	tabbed
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+shift+space
+	</td>
+	<td>
+	toggle floating
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+num
+	</td>
+	<td>
+	switch to workspace
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+shift+num
+	</td>
+	<td>
+	move to workspace
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+d / mod+tab
+	</td>
+	<td>
+	open launcher
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+shift+q
+	</td>
+	<td>
+	kill window
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+shift+c
+	</td>
+	<td>
+	reload config
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+shift+r
+	</td>
+	<td>
+	restart i3
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+shift+e
+	</td>
+	<td>
+	exit i3
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+b
+	</td>
+	<td>
+	open nautilus
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+g
+	</td>
+	<td>
+	open gedit
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+print
+	</td>
+	<td>
+	take screenshot
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+enter
+	</td>
+	<td>
+	open tilix
+	</td>
+</tr>
+<tr>
+	<td>
+	menu
+	</td>
+	<td>
+	toggle tilix (quake mode)
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+m
+	</td>
+	<td>
+	toggle bar mode
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+a
+	</td>
+	<td>
+	focus parent
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+x
+	</td>
+	<td>
+	focus child
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+space
+	</td>
+	<td>
+	toggle focus (float/tile)
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+q
+	</td>
+	<td>
+	move to scratchpad
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+c
+	</td>
+	<td>
+	toggle scratchpad
+	</td>
+</tr>
+<tr>
+	<td>
+	mod+p
+	</td>
+	<td>
+	open arandr
+	</td>
+</tr>
+</table>

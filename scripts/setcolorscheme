@@ -1,0 +1,16 @@
+#!/bin/bash
+BG=$(cat $HOME/.config/nitrogen/bg-saved.cfg | grep 'file=' | cut -d '=' -f2)
+wal -c
+wal -i "$BG" -t -n
+rm $HOME/.Xresources
+mv $HOME/.cache/wal/colors.Xresources $HOME/.Xresources
+xrdb -load $HOME/.Xresources
+pkill dunst
+dunst \
+	-lb "${color0:-#F0F0F0}" \
+	-nb "${color0:-#F0F0F0}" \
+	-cb "${color0:-#F0F0F0}" \
+	-lf "${color15:=#000000}" \
+	-bf "${color15:=#000000}" \
+	-cf "${color15:=#000000}" \
+	-nf "${color15:=#000000}" &

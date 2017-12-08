@@ -1,0 +1,5 @@
+#!/bin/bash
+scrot -q 75 -s -e 'mv $f ~/Pictures/Screenshots/; echo $f > ".scrtxt"' '%d-%b-%y_%T.png'
+sleep 1
+notify-send -t 3000 -u low "Screenshot taken." $(cat ".scrtxt")
+rm ".scrtxt"

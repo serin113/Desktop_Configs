@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#unsplash-wallpaper -f \
+#	-q skyline,sunset \
+#	-d $HOME/CommonFiles/Wallpapers/Unsplashed \
+#	--width 1920 \
+#	--height 1080
+
+SEARCH=${1:-"skyline sunset"}
+
+SEARCH=${SEARCH// /%2C}
+rm $HOME/Wallpapers/current_wallpaper.png
+wget "https://source.unsplash.com/random/1920x1080/?$SEARCH" \
+	-O $HOME/Wallpapers/current_wallpaper.png
+nitrogen --set-zoom-fill $HOME/Wallpapers/current_wallpaper.png --save
+bash $HOME/scripts/setcolorscheme

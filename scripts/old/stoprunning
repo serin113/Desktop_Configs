@@ -1,0 +1,52 @@
+#!/bin/bash
+
+PID="/tmp/keeprunning_$2.pid"
+
+killme ()
+{
+	kill $! &
+	exit 0
+}
+
+cleanup ()
+{
+	rm -rf "$PID"
+	killme
+}
+
+trap cleanup SIGINT SIGTERM
+
+if [[ $1 = "quit" ]]; then
+
+	cleanup
+	
+else
+
+	if [ $2 = '' ]; then
+	
+		
+	
+	fi
+	
+	
+	if [ ! -e "$PID" ]; then
+	
+		echo $$ >> "$PID"
+		
+	else
+	
+		echo "Another instance of '$1' with id $2 running in background, exiting this one..."
+		exit 0
+		
+	fi
+
+	while :; do
+	
+		sleep 1 &
+		$1
+		
+	done;
+
+fi
+
+exit

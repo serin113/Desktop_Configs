@@ -1,0 +1,2 @@
+#!/bin/bash
+rofi -font 'Source Code Pro 13' -show drun -modi 'drun,run'

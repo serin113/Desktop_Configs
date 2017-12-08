@@ -1,0 +1,2 @@
+#!/bin/bash
+zenity --text-info --title="Hotkeys" --filename="`dirname $0`/i3ref.txt" --width 400 --height 971 --html

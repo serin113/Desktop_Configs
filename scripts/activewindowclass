@@ -1,0 +1,3 @@
+#!/bin/bash
+xprop -id $(xdotool getactivewindow) | grep "WM_CLASS(STRING)" | cut -d'"' -f4 | \
+awk -v len=$1 '{ if (length($0) > len) print substr($0, 1, len-3) "..."; else print; }'
