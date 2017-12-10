@@ -21,6 +21,7 @@ smart_borders on
 
 # Help
 bindsym $mod+z exec $HOME/scripts/i3ref
+bindsym $mod+Shift+z exec $HOME/scripts/dunstref
 
 # Window stuff
 new_window pixel 3
@@ -35,17 +36,12 @@ bindsym $mod+Shift+o gaps outer current minus 5
 
 # terminal shi
 #bindsym $mod+z scratchpad show
-bindsym $mod+b exec nautilus --no-desktop --new-window
-bindsym $mod+g exec gedit --new-window
-bindsym $mod+p exec arandr
-
-set $dunstCommand dunst -lb "${color0:-#F0F0F0}" \
-        -nb "${color0:-#F0F0F0}" \
-        -cb "${color0:-#F0F0F0}" \
-        -lf "${color15:=#000000}" \
-        -bf "${color15:=#000000}" \
-        -cf "${color15:=#000000}" \
-        -nf "${color15:=#000000}"
+bindsym $mod+b --release exec nautilus --no-desktop --new-window
+bindsym $mod+g --release exec gedit --new-window
+bindsym $mod+Shift+g --release exec gedit --new-window $HOME/.config/i3/config
+bindsym $mod+p --release exec arandr
+bindsym $mod+F12 --release exec notify-send "Summary" "Body"
+bindsym $mod+Shift+F12 --release exec notify-send -u critical "Summary" "Body"
 
 # Startup stuff
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -54,8 +50,7 @@ exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Device Enabled"
 exec --no-startup-id libinput-gestures-setup start &
 exec --no-startup-id export SSH_AUTH_SOCK &
 exec --no-startup-id compton --config "$HOME/compton.conf" &
-exec --no-startup-id killall -q xfce4-notifyd &
-exec --no-startup-id $dunstCommand &
+exec --no-startup-id $HOME/scripts/launchdunst &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id nm-applet &
 exec --no-startup-id clipit &

@@ -11,7 +11,7 @@ font = Source Sans Pro 11
 # <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
 # If markup is not allowed, those tags will be stripped out of the
 # message.
-allow_markup = yes
+markup = yes
 plain_text = no
 
 # The format of the message.  Possible variables are:
@@ -110,7 +110,7 @@ sticky_history = no
 history_length = 15
 
 # Display indicators for URLs (U) and actions (A).
-show_indicators = yes
+show_indicators = no
 
 # The height of a single line.  If the height is smaller than the
 # font height, it will get raised to the font height.
@@ -120,7 +120,7 @@ line_height = 3
 # Draw a line of "separatpr_height" pixel height between two
 # notifications.
 # Set to 0 to disable.
-separator_height = 2
+separator_height = 3
 
 # Padding between text and separator.
 padding = 4
@@ -134,7 +134,7 @@ horizontal_padding = 6
 #  * foreground: use the same color as the foreground;
 #  * frame: use the same color as the frame;
 #  * anything else will be interpreted as a X color.
-separator_color = frame
+separator_color = auto
 
 # Print a notification on startup.
 # This is mainly for error detection, since dbus (re-)starts dunst
@@ -154,10 +154,8 @@ max_icon_size = 30
 # Paths to default icons.
 icon_folders = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
 
-
-[frame]
-width = 3
-color = "#8EC07C"
+frame_width = 3
+frame_color = "#8EC07C"
 
 [shortcuts]
 
@@ -183,24 +181,21 @@ context = ctrl+shift+period
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
-frame_color = "#6699ff"
-foreground = "#6699ff"
-background = "#191311"
-#background = "#2B313C"
+#frame_color = "#6699ff"
+#foreground = "#6699ff"
+#background = "#191311"
 timeout = 5
 
 [urgency_normal]
-frame_color = "#7fd22c"
-foreground = "#7fd22c"
-background = "#191311"
-#background = "#2B313C"
+#frame_color = "#7fd22c"
+#foreground = "#7fd22c"
+#background = "#191311"
 timeout = 10
 
 [urgency_critical]
-frame_color = "#fe5124"
-foreground = "#fe5124"
-background = "#191311"
-#background = "#2B313C"
+#frame_color = "#fe5124"
+#foreground = "#fe5124"
+#background = "#191311"
 timeout = 30
 
 
