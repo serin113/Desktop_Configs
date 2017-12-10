@@ -1,0 +1,2 @@
+#!/bin/bash
+zenity --text-info --title="Hotkeys" --filename="`dirname $0`/dunstref.txt" --width 400 --height 215 --html

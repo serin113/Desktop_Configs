@@ -1,0 +1,55 @@
+<style>
+	table {
+		width: 100%;
+		margin: 0;
+	}
+	td {
+		border: 1px solid;
+		margin: 0;
+		border-color: black;
+		padding: 5px;
+	}
+	tr {
+		border: 1px solid;
+		margin: 0;
+		border-color: black;
+	}
+	html, body {
+		margin: 0;
+		padding: 0;
+	}
+</style>
+<table>
+<tr>
+	<td>
+	ctrl+space
+	</td>
+	<td>
+	close notification
+	</td>
+</tr>
+<tr>
+	<td>
+	ctrl+shift+space
+	</td>
+	<td>
+	close all notifications
+	</td>
+</tr>
+<tr>
+	<td>
+	ctrl+`
+	</td>
+	<td>
+	display history
+	</td>
+</tr>
+<tr>
+	<td>
+	ctrl+shift+.
+	</td>
+	<td>
+	context menu
+	</td>
+</tr>
+</table>
