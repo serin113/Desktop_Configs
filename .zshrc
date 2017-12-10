@@ -10,7 +10,7 @@ unalias run-help
 alias help=run-help
 
 autoload -Uz compinit promptinit
-compinit
+compinit -i
 promptinit
 source $HOME/agnoster.zsh-theme
 
@@ -22,9 +22,57 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+
+setopt complete_in_word
+setopt always_to_end
+
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+ZSH_AUTOSUGGEST_ORIGINAL_WIDGET_PREFIX=autosuggest-orig-
+ZSH_AUTOSUGGEST_STRATEGY=default
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
+	history-search-forward
+	history-search-backward
+	history-beginning-search-forward
+	history-beginning-search-backward
+	history-substring-search-up
+	history-substring-search-down
+	up-line-or-history
+	down-line-or-history
+	accept-line
+)
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
+	forward-char
+	end-of-line
+	vi-forward-char
+	vi-end-of-line
+	vi-add-eol
+)
+ZSH_AUTOSUGGEST_EXECUTE_WIDGETS=(
+)
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
+	forward-word
+	emacs-forward-word
+	vi-forward-word
+	vi-forward-word-end
+	vi-forward-blank-word
+	vi-forward-blank-word-end
+)
+ZSH_AUTOSUGGEST_IGNORE_WIDGETS=(
+	orig-\*
+	beep
+	run-help
+	set-local-history
+	which-command
+	yank
+)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=
+ZSH_AUTOSUGGEST_ASYNC_PTY_NAME=zsh_autosuggest_pty
 
 HISTFILE=~/.histfile
 HISTSIZE=1000

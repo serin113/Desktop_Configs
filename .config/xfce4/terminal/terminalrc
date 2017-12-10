@@ -32,9 +32,9 @@ DropdownStatusIcon=FALSE
 DropdownWidth=92
 DropdownHeight=88
 DropdownShowBorders=TRUE
-BindingBackspace=TERMINAL_ERASE_BINDING_ASCII_DELETE
-BindingDelete=TERMINAL_ERASE_BINDING_DELETE_SEQUENCE
 ShortcutsNoMenukey=TRUE
 ShortcutsNoHelpkey=TRUE
 DropdownKeepOpenDefault=TRUE
+BindingBackspace=TERMINAL_ERASE_BINDING_ASCII_DELETE
+BindingDelete=TERMINAL_ERASE_BINDING_DELETE_SEQUENCE
 
