@@ -96,8 +96,9 @@ bindsym $mod+Shift+Control+Right move workspace next
 bindsym --release $mod+Print exec "$HOME/scripts/scrot"
 #bindcode 135 exec --no-startup-id tilix -q
 #bindsym --release $mod+m bar mode toggle top-bar
-bindcode 135 exec --no-startup-id xfce4-terminal --drop-down \
-	&& i3-msg '[window_role="xfce4-terminal-dropdown"] focus move down 33'
+bindcode 135 exec --no-startup-id xfce4-terminal --drop-down &&\
+	i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] focus' &&\
+	i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] move down 33 px'
 
 
 
@@ -130,7 +131,7 @@ bindsym $mod+c scratchpad show
 for_window [class="(?i)nm-connection-editor"] floating enable, sticky enable
 for_window [class="(?i)blueman-manager"] floating enable, sticky enable
 #for_window [window_role="(?i)quake" class="(?i)tilix"] floating enable, sticky enable
-#for_window [window_role="(?i)xfce4-terminal-dropdown" class="(?i)xfce4-terminal"] floating enable, sticky enable
+#for_window [window_role="(?i)xfce4-terminal-dropdown"] floating enable, sticky enable
 for_window [class="(?i)viewnior"] floating enable
 for_window [class="(?i)arandr"] floating enable
 
@@ -296,7 +297,8 @@ bindsym $mod+r mode "resize"
 #set $indInactiveCol #000000
 
 set_from_resource $bg i3wm.color0 #000000AA
-set_from_resource $bg_2 i3wm.color0 #000000
+#set_from_resource $bg_2 i3wm.color0 #000000
+set $bg_2 #00000000
 set_from_resource $mainCol i3wm.color2 #DDDDDD
 set_from_resource $mainActiveCol i3wm.color7 #FFFFFF
 set_from_resource $secondCol i3wm.color15 #DDDDDD
@@ -327,21 +329,24 @@ bar {
 		urgent_workspace	$urgentCol $urgentCol $textCol
 		binding_mode		$bindingCol $bindingCol $textCol
     }
-    font pango:FontAwesome 10, Source Sans Pro 12
+#	font pango:FontAwesome 10, Source Sans Pro 12
 #	font pango:FontAwesome 10, Terminus (TTF) 13
 #	font pango:FontAwesome 10, Monofur 12
-    tray_padding 2
+#	font pango:eurofurence 13
+	font pango:Source Sans Pro 12
+#	font pango:Helvetica 11
+    tray_padding 3
 	separator_symbol " "
 	height 30
 #    i3bar_command i3bar -t
     i3bar_command i3bar
 #    tray_output none
-#    binding_mode_indicator no
-    binding_mode_indicator yes
+    binding_mode_indicator no
+#    binding_mode_indicator yes
     id top-bar
     mode dock
 #    hidden_state hide
-    modifier $mod
+#    modifier $mod
 }
 
 bar {
@@ -356,11 +361,13 @@ bar {
 		binding_mode		$bindingCol $bindingCol $textCol
     }
     tray_padding 0
-#    i3bar_command i3bar -t
+	font pango:Source Sans Pro Semibold 15
+	i3bar_command i3bar -t
     tray_output none
 	height 30
-    mode invisible
+    mode hide
     hidden_state hide
-#    modifier $mod
+    modifier $mod
     id bot-bar
+	binding_mode_indicator yes
 }

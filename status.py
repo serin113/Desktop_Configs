@@ -9,8 +9,8 @@ inactiveColor = sys.argv[4]
 
 status = Status(logfile="$HOME/i3pystatus.log")
 
-spacing = 17
-innerSpacing = 9
+spacing = 14
+innerSpacing = 8
 
 def hintsSettings(color, sep=None, sepWidth=None, borTop=None, bg=None):
 	if sep is None:
@@ -127,8 +127,6 @@ drawBorder()
 
 status.register("battery",
     format="<b><span color='"+iconColor+"'>{status}</span><span color='"+boldColor+"'>{percentage:.0f}</span></b><small> {remaining:%E%h\'%M\"}</small>",
-	alert_percentage=15,
-	alert=True,
     status={
 #        "DIS":  "⚡ ",
         "DIS":  " ",
@@ -142,6 +140,9 @@ status.register("battery",
     critical_color=batteryColor_c,
     critical_level_percentage=5,
     critical_level_command="",
+    alert_percentage=15,
+    alert_timeout=0,
+	alert=True,
 	alert_format_title="Battery low",
 	alert_format_body="{percentage:.1f}% ({remaining:%E%h\'%m\"}) remaining",)
 
@@ -151,8 +152,8 @@ status.register("backlight",
 	color=lightColor,)
 
 status.register("pulseaudio",
-    format="<span color='"+iconColor+"'></span> <b><span color='"+boldColor+"'>{volume}</span></b>",
-    format_muted="<span color='"+iconColor+"'></span> <b><span color='"+boldColor+"'>{volume}</span></b>",
+    format="<span color='"+iconColor+"'>🔊</span> <b><span color='"+boldColor+"'>{volume}</span></b>",
+    format_muted="<span color='"+iconColor+"'>🔊</span> <b><span color='"+boldColor+"'>{volume}</span></b>",
     hints=hintsSettings(volumeColor, False, innerSpacing),
     color_unmuted=volumeColor,
     color_muted=volumeColor_m,
