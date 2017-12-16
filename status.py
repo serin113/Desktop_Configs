@@ -141,7 +141,7 @@ status.register("battery",
     critical_level_percentage=5,
     critical_level_command="",
     alert_percentage=15,
-    alert_timeout=0,
+    alert_timeout=5,
 	alert=True,
 	alert_format_title="Battery low",
 	alert_format_body="{percentage:.1f}% ({remaining:%E%h\'%m\"}) remaining",)

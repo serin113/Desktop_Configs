@@ -35,20 +35,22 @@ for_window [class="(?i)arandr"] floating enable
 
 
 # help key bindings
-bindsym $mod+z exec $HOME/scripts/i3ref
-bindsym $mod+Shift+z exec $HOME/scripts/dunstref
+bindsym --release $mod+z exec $HOME/scripts/i3ref
+bindsym --release $mod+Shift+z exec $HOME/scripts/dunstref
 
 
 # program launch key bindings
-bindsym --release $mod+b --release exec nautilus --no-desktop --new-window
-bindsym --release $mod+g --release exec gedit --new-window
-bindsym --release $mod+Shift+g --release exec gedit --new-window $HOME/.config/i3/config
-bindsym --release $mod+p --release exec arandr
-bindsym --release $mod+F12 --release exec notify-send "Summary" "Body"
-bindsym --release $mod+Shift+F12 --release exec notify-send -u critical "Summary" "Body"
-bindsym --release $mod+Print exec "$HOME/scripts/scrot"
-bindcode 135 exec --no-startup-id xfce4-terminal --drop-down &&\
-	i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] move down 33 px'
+bindsym $mod+b --release exec nautilus --no-desktop --new-window
+bindsym $mod+g --release exec gedit --new-window
+bindsym $mod+Shift+g --release exec gedit --new-window $HOME/.config/i3/config
+bindsym $mod+p --release exec arandr
+bindsym $mod+F12 --release exec notify-send "Summary" "Body"
+bindsym $mod+Shift+F12 --release exec notify-send -u critical "Summary" "Body"
+bindsym $mod+Print exec "$HOME/scripts/scrot"
+#bindcode 135 exec --no-startup-id i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] focus' &&\
+#	xfce4-terminal --drop-down &&\
+#	i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] move down 33 px'
+bindcode 135 exec --no-startup-id xfce4-terminal --drop-down
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d --release exec $HOME/scripts/rofi-run
 bindsym $mod+Tab --release exec $HOME/scripts/rofi-win
@@ -171,7 +173,7 @@ exec --no-startup-id hardcode-tray --conversion-tool RSVGConvert --size 22 --the
 
 # i3 color variables
 set_from_resource $bg i3wm.color0 #000000AA
-set $bg_2 #00000000
+set $bg_2 #00000055
 set_from_resource $mainCol i3wm.color2 #DDDDDD
 set_from_resource $mainActiveCol i3wm.color7 #FFFFFF
 set_from_resource $secondCol i3wm.color15 #DDDDDD
