@@ -1,2 +1,2 @@
 #!/bin/bash
-rofi -font 'Source Code Pro 13' -show drun -modi 'drun,run' -sidebar-mode -theme-str "#window{location:north;y-offset:30;padding:3px;}"
+rofi -font 'Source Code Pro 13' -show drun -modi 'drun,run' -sidebar-mode -theme-str "#window{location:north;y-offset:25;padding:3px;}"

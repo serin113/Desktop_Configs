@@ -68,6 +68,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioRaiseVolume exec amixer set Master 3%+
 bindsym XF86AudioLowerVolume exec amixer set Master 3%-
+bindsym XF86AudioMute exec amixer set Master toggle
 bindsym $mod+Mod1+c exec playerctl play-pause
 bindsym $mod+Mod1+v exec playerctl next
 bindsym $mod+Mod1+f exec playerctl previous
@@ -208,14 +209,15 @@ bar {
 		binding_mode		$bindingCol $bindingCol $textCol
     }
 #	font pango:FontAwesome 10, Source Sans Pro 12
+	font pango:Source Sans Pro 11
 #	font pango:FontAwesome 10, Terminus (TTF) 13
 #	font pango:FontAwesome 10, Monofur 12
 #	font pango:eurofurence 13
-	font pango:Source Sans Pro 12
+#	font pango:Source Sans Pro 12
 #	font pango:Helvetica 11
     tray_padding 3
 	separator_symbol " "
-	height 30
+	height 25
 #	i3bar_command i3bar -t
     i3bar_command i3bar
 #	tray_output none
@@ -224,29 +226,5 @@ bar {
     mode dock
 #	hidden_state hide
 #	modifier $mod
-}
-
-
-# i3-bar 1
-bar {
-    position          bottom
-    workspace_buttons no
-    colors {
-		background $bg_2
-		focused_workspace	$mainCol $mainCol $textCol
-		active_workspace	$mainActiveCol $mainActiveCol $textCol
-		inactive_workspace	$mainInactiveCol $mainInactiveCol $inactiveTextCol
-		urgent_workspace	$urgentCol $urgentCol $textCol
-		binding_mode		$bindingCol $bindingCol $textCol
-    }
-    tray_padding 0
-	font pango:Source Sans Pro Semibold 15
-	i3bar_command i3bar -t
-    tray_output none
-	height 30
-    mode hide
-    hidden_state hide
-    modifier $mod
-    id bot-bar
 	binding_mode_indicator yes
 }

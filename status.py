@@ -10,7 +10,9 @@ inactiveColor = sys.argv[4]
 status = Status(logfile="$HOME/i3pystatus.log")
 
 spacing = 14
-innerSpacing = 8
+innerSpacing = 6
+
+iconFont = "Font Awesome 5 Free 10"
 
 def hintsSettings(color, sep=None, sepWidth=None, borTop=None, bg=None):
 	if sep is None:
@@ -107,7 +109,6 @@ pingColor_b		= networkColor_d
 clockPrefix		= ""
 clockFormat		= "<b><span color='"+boldColor+"'>%H:%M</span>   </b><small>%a</small> <b><span color='"+boldColor+"'>%-d</span></b> %b"
 
-
 drawBorder(0, 0)
 drawBorder(None, spacing-9)
 #drawBorder(None, spacing)
@@ -126,12 +127,11 @@ status.register("clock",
 drawBorder()
 
 status.register("battery",
-    format="<b><span color='"+iconColor+"'>{status}</span><span color='"+boldColor+"'>{percentage:.0f}</span></b><small> {remaining:%E%h\'%M\"}</small>",
+    format="<b> <span color='"+iconColor+"' font='"+iconFont+"'>{status}</span> <span color='"+boldColor+"'>{percentage:.0f}</span></b><small> {remaining:%E%h\'%M\"}</small>",
     status={
-#        "DIS":  "⚡ ",
-        "DIS":  " ",
-        "CHR":  " ",
-        "FULL": " ",
+        "DIS":  "",
+        "CHR":  "",
+        "FULL": "",
     },
     hints=hintsSettings(batteryColor),
     color=batteryColor,
@@ -147,13 +147,14 @@ status.register("battery",
 	alert_format_body="{percentage:.1f}% ({remaining:%E%h\'%m\"}) remaining",)
 
 status.register("backlight",
-	format="<span color='"+iconColor+"'></span> <b><span color='"+boldColor+"'>{percentage}</span></b>",
+	format=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{percentage}</span></b>",
 	hints=hintsSettings(lightColor, False, innerSpacing),
 	color=lightColor,)
 
 status.register("pulseaudio",
-    format="<span color='"+iconColor+"'>🔊</span> <b><span color='"+boldColor+"'>{volume}</span></b>",
-    format_muted="<span color='"+iconColor+"'>🔊</span> <b><span color='"+boldColor+"'>{volume}</span></b>",
+    format=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{volume}</span></b> <small><span font='"+iconFont+"'>{selected}</span></small>",
+    format_muted=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{volume}</span></b> <small><span font='"+iconFont+"'>{selected}</span></small>",
+	format_selected="",
     hints=hintsSettings(volumeColor, False, innerSpacing),
     color_unmuted=volumeColor,
     color_muted=volumeColor_m,
@@ -163,8 +164,8 @@ status.register("network",
     interface="wlp4s0",
     detect_active=True,
     next_if_down=True,
-    format_up="<span color='"+iconColor+"'></span> <b><span color='"+boldColor+"'>↓{bytes_recv}</span></b> <small>↑{bytes_sent}</small>",
-    format_down="<span color='"+iconColor+"'></span> <b><span color='"+boldColor+"'>down</span></b>",
+    format_up=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>↓{bytes_recv}</span></b> <small>↑{bytes_sent}</small>",
+    format_down=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>down</span></b>",
     hints=hintsSettings(networkColor),
     dynamic_color=False,
     color_up=networkColor,
@@ -196,50 +197,50 @@ group = Group(
 	hints=hintsSettings(procColor),
 	on_upscroll=['cycle_module', -1],
 	on_downscroll=['cycle_module', 1])
-
-group.register("disk",
-    path="/",
-    format="<span color='"+iconColor+"'></span> <b><span color='"+boldColor+"'>{avail:0.1f}</span></b> <small>diskfree</small>",
-    color=procColor,)
     
 group.register("now_playing",
 #     format="<b><small>{status}</small> {title} · </b><small>{artist}</small>",
-	 format="<b><small><span color='"+iconColor+"'>{status}</span></small> <span color='"+boldColor+"'>{title}</span>   </b><small>{artist}</small>",
+	 format="<b><small> <span color='"+iconColor+"' font='"+iconFont+"'>{status}</span></small> <span color='"+boldColor+"'>{title}</span>   </b><small>{artist}</small>",
      on_leftclick=["player_command","PlayPause"],
      on_rightclick=["player_command","Next"],
      hints=hintsSettings(musicColor),
 	 color=musicColor,
-	 format_no_player="<span color='"+iconColor+"'></span> <small>no player</small>",
+	 format_no_player=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <small>no player</small>",
 	 hide_no_player=False,
      status={
-		"play": " ",
-        "pause": " ",
-        "stop": " ",
+		"play": "",
+        "pause": "",
+        "stop": "",
      },)
+	 
+group.register("disk",
+    path="/",
+    format=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{avail:0.1f}</span></b> <small>diskfree</small>",
+    color=procColor,)
     
 group.register("cpu_usage",
-	format="<span color='"+iconColor+"'></span> <b><span color='"+boldColor+"'>{usage:0.1f}</span></b> <small>cpu</small>",
+	format=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{usage:0.1f}</span></b> <small>cpu</small>",
 	format_all="<b>{usage:0.0f}</b> <small>{core}</small> ",
 	exclude_average=False,
 	color=procColor,)
 	
 group.register("cpu_freq",
-	format="<span color='"+iconColor+"'></span> <b><span color='"+boldColor+"'>{avgg}</span></b> <small>cpufreq</small>",
+	format=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{avgg}</span></b> <small>cpufreq</small>",
 	color=procColor,)
 	
 group.register("mem",
-	format="<span color='"+iconColor+"'></span> <b><span color='"+boldColor+"'>{avail_mem:0.1f}</span></b> <small>memfree</small>",
+	format=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{avail_mem:0.1f}</span></b> <small>memfree</small>",
 	divisor=1073741824,
 	color=procColor,)
 	
 group.register("uptime",
-	format="<span color='"+iconColor+"'></span> <b><span color='"+boldColor+"'>{hours}:{mins}</span></b> <small>uptime</small>",
+	format=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{hours}:{mins}</span></b> <small>uptime</small>",
 	color=procColor,)
      
 status.register(group)
 
 status.register("scratchpad",
-	format="<span color='"+iconColor+"'></span> <b><span color='"+boldColor+"'>{number}</span></b>",
+	format=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{number}</span></b>",
 	hints=hintsSettings(scratchColor),
 	always_show=False,
 #	on_leftclick="i3-msg scratchpad show && i3-msg floating toggle")
