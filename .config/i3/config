@@ -31,7 +31,8 @@ for_window [class=".*"] border pixel 3
 for_window [class="(?i)nm-connection-editor"] floating enable, sticky enable
 for_window [class="(?i)blueman-manager"] floating enable, sticky enable
 for_window [class="(?i)viewnior"] floating enable
-for_window [class="(?i)arandr"] floating enable
+for_window [class="(?i)arandr"] floating enable, sticky enable
+for_window [class="(?i)synergy"] floating enable, sticky enable
 
 
 # help key bindings
@@ -61,8 +62,8 @@ bindsym $mod+Return exec xfce4-terminal
 # system control key bindings
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 -time 100
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 -time 100
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
@@ -197,7 +198,7 @@ client.urgent			$urgentCol $urgentCol $textCol $indCol $urgentCol
 
 # i3-bar 1
 bar {
-    status_command    python $HOME/status.py "$mainCol" "$mainActiveCol" "$secondCol" "$inactiveTextCol"
+    status_command    python $HOME/status.py "$mainCol" "$mainActiveCol" "$secondCol" "$inactiveTextCol" "$bg"
     position          top
     workspace_buttons yes
     colors {
@@ -209,7 +210,7 @@ bar {
 		binding_mode		$bindingCol $bindingCol $textCol
     }
 #	font pango:FontAwesome 10, Source Sans Pro 12
-	font pango:Source Sans Pro 11
+	font pango:Source Sans Pro 12
 #	font pango:FontAwesome 10, Terminus (TTF) 13
 #	font pango:FontAwesome 10, Monofur 12
 #	font pango:eurofurence 13

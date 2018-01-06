@@ -2,4 +2,7 @@
 sudo create_ap\
 	--freq-band 2.4\
 	--dhcp-dns 8.8.8.8,8.8.4.4\
-	wlp4s0 wlp4s0 mirror pioneer123
+	-m nat\
+	--ieee80211ac\
+	--ieee80211n\
+	wlp4s0 wlp4s0 mirr0r babyshark22

@@ -6,6 +6,7 @@ primaryColor = sys.argv[1]
 compColor = sys.argv[2]
 secondaryColor = sys.argv[3]
 inactiveColor = sys.argv[4]
+backgroundColor = sys.argv[5]
 
 status = Status(logfile="$HOME/i3pystatus.log")
 
@@ -60,27 +61,6 @@ def drawBorder(borSize=None, sepWid=None, borCol=None, inText=None):
 		},)
 	return
 
-#clockColor 		= "#FFFFFF"
-#batteryColor 	= "#44DD77"
-#batteryColor_h 	= "#AAFF00"
-#batteryColor_c	= "#FF2222"
-#diskColor 		= "#DD7744"
-#volumeColor		= "#EE5599"
-#volumeColor_m	= "#777777"
-#musicColor		= "#99FF44"
-#lightColor		= "#DDDD99"
-#titleColor		= clockColor
-#titleColor_bg	= None
-#networkColor 	= "#5599FF"
-#networkColor_d	= "#777777"
-#onlineColor		= networkColor
-#onlineColor_o	= networkColor_d
-#pingColor		= networkColor
-#pingColor_b		= networkColor_d
-
-#white = "#FFFFFF"
-#gray = "#999999"
-
 white = secondaryColor
 gray = inactiveColor
 
@@ -109,9 +89,20 @@ pingColor_b		= networkColor_d
 clockPrefix		= ""
 clockFormat		= "<b><span color='"+boldColor+"'>%H:%M</span>   </b><small>%a</small> <b><span color='"+boldColor+"'>%-d</span></b> %b"
 
-drawBorder(0, 0)
-drawBorder(None, spacing-9)
-#drawBorder(None, spacing)
+#drawBorder(0, 0)
+#drawBorder(None, spacing-9)
+drawBorder(0, 0, None, "  ")
+
+status.register("keyboard_locks",
+	format="{caps}{num}",
+	caps_on="<b> A </b>",
+	caps_off="",
+	num_on="<b> 1 </b>",
+	num_off="",
+	hints=hintsSettings(iconColor,0,0,None,iconColor),
+	color=backgroundColor)
+	
+drawBorder(None, 0, None, " ")
 
 status.register("clock",
     format=[(clockPrefix+clockFormat, "Asia/Manila"),
@@ -152,8 +143,8 @@ status.register("backlight",
 	color=lightColor,)
 
 status.register("pulseaudio",
-    format=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{volume}</span></b> <small><span font='"+iconFont+"'>{selected}</span></small>",
-    format_muted=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{volume}</span></b> <small><span font='"+iconFont+"'>{selected}</span></small>",
+    format=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{volume}</span></b> <small><span font='"+iconFont+"' color='"+boldColor+"'>{selected}</span></small>",
+    format_muted=" <span color='"+iconColor+"' font='"+iconFont+"'></span> <b><span color='"+boldColor+"'>{volume}</span></b> <small><span font='"+iconFont+"' color='"+boldColor+"'>{selected}</span></small>",
 	format_selected="",
     hints=hintsSettings(volumeColor, False, innerSpacing),
     color_unmuted=volumeColor,
