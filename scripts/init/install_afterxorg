@@ -1,3 +1,6 @@
+echo "Enabling NTP sync..."
+sudo timedatectl set-ntp true
+
 echo "Installing xorg..."
 pacaur -S xorg-server --needed
 
@@ -5,10 +8,14 @@ echo "Installing lightdm..."
 pacaur -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-litarvan --needed
 
 echo "Configuring lightdm..."
-if grep -Fxq "greeter-session=lightdm-webkit2-greeter" /etc/lightdm/lightdm.conf ; then
+if grep -q "lightdm-webkit2-greeter" /etc/lightdm/lightdm.conf ; then
+	:
+else
 	sudo nano /etc/lightdm/lightdm.conf
 fi
-if grep -Fxq "litarvan" /etc/lightdm/lightdm-webkit2-greeter.conf ; then
+if grep -q "litarvan" /etc/lightdm/lightdm-webkit2-greeter.conf ; then
+	:
+else
 	sudo nano /etc/lightdm/lightdm-webkit2-greeter.conf
 fi
 sudo systemctl enable lightdm.service
@@ -23,7 +30,12 @@ pacaur -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils --needed
 echo "Installing misc..."
 pacaur -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures \
 compton rofi xorg-xrandr reflector htop synergy qt5-base arandr vivaldi nautilus-admin seahorse \
-xorg-xdpyinfo seahorse-nautilus compton gedit--needed
+xorg-xdpyinfo seahorse-nautilus gedit unclutter-xfixes-git polkit-gnome xorg-xinput redshift xfce4-terminal --needed
+
+echo "Installing bluetooth and network GUIs..."
+pacaur -S blueman bluez bluez-utils networkmanager network-manager-applet --needed
+sudo systemctl enable NetworkManager.service
+sudo systemctl enable NetworkManager-wait-online.service
 
 echo "Installing script dependencies..."
 pacaur -S pkgfile zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting python-pywal --needed
@@ -31,7 +43,7 @@ echo "Installing fonts..."
 pacaur -S nitrogen adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-font-awesome --needed
 
 echo "Installing power and temp services..."
-pacaur -S tlp thermald lm_sensors
+pacaur -S tlp thermald lm_sensors --needed
 sudo systemctl enable tlp.service
 sudo systemctl enable tlp-sleep.service
 sudo systemctl mask systemd-rfkill.service
