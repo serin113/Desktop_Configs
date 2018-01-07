@@ -9,7 +9,8 @@
 SEARCH=${1:-"skyline sunset"}
 SEARCH=${SEARCH// /%2C}
 
-RES=${2:-"1920x1080"}
+SCREENRES="$(xrandr | grep \* | awk '{print $1}')"
+RES=${2:-$SCREENRES}
 
 WALLPAPERPATH=$HOME/Wallpapers
 WALLPAPER=$WALLPAPERPATH/current_wallpaper.png

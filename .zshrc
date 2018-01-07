@@ -1,4 +1,4 @@
-cat /home/vulpes/.cache/wal/sequences
+cat $HOME/.cache/wal/sequences
 
 autoload -Uz run-help
 autoload -Uz run-help-git
