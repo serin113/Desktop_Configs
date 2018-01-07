@@ -19,8 +19,9 @@ pacaur -S pkgfile zsh-autosuggestions zsh-history-substring-search zsh-syntax-hi
 
 pacaur -S nitrogen adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-font-awesome --needed
 
-pacaur -S tlp
+pacaur -S tlp thermald lm_sensors
 sudo systemctl enable tlp.service
 sudo systemctl enable tlp-sleep.service
 sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket
+sudo systemctl enable thermald
