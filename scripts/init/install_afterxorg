@@ -7,12 +7,12 @@ echo "Configuring lightdm..."
 #sudo nano /etc/lightdm/lightdm-webkit2-greeter.conf
 sudo systemctl enable lightdm.service
 echo "Installing i3..."
-pacaur -S i3-gaps i3pystatus-git python-pip xorg-xset python-dbus xorg-xprop --needed
+pacaur -S i3-gaps i3pystatus-git python-pip xorg-xset python-dbus xorg-xprop xorg-xbacklight --needed
 pip install netifaces colour pytz psutil i3ipc
 echo "Installing pulseaudio..."
 pacaur -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils --needed
 echo "Installing misc..."
-pacaur -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures compton rofi xorg-xrandr --needed
+pacaur -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures compton rofi xorg-xrandr reflector htop synergy --needed
 pacaur -S nautilus-admin seahorse seahorse-nautilus --needed
 
 pacaur -S pkgfile zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting python-pywal --needed
