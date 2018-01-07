@@ -9,10 +9,14 @@
 SEARCH=${1:-"skyline sunset"}
 SEARCH=${SEARCH// /%2C}
 
-WALLPAPER=$HOME/Wallpapers/current_wallpaper.png
+WALLPAPERPATH=$HOME/Wallpapers
+WALLPAPER=$WALLPAPERPATH/current_wallpaper.png
 
 if [ -f $WALLPAPER ]; then
 	rm $WALLPAPER
+fi
+if [ ! -d $WALLPAPERPATH ]; then
+	mkdir $WALLPAPERPATH
 fi
 wget "https://source.unsplash.com/random/1920x1080/?$SEARCH" \
 	-O $WALLPAPER
