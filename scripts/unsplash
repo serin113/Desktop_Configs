@@ -9,6 +9,8 @@
 SEARCH=${1:-"skyline sunset"}
 SEARCH=${SEARCH// /%2C}
 
+RES=${2:-"1920x1080"}
+
 WALLPAPERPATH=$HOME/Wallpapers
 WALLPAPER=$WALLPAPERPATH/current_wallpaper.png
 
@@ -18,7 +20,7 @@ fi
 if [ ! -d $WALLPAPERPATH ]; then
 	mkdir $WALLPAPERPATH
 fi
-wget "https://source.unsplash.com/random/1920x1080/?$SEARCH" \
+wget "https://source.unsplash.com/random/$RES/?$SEARCH" \
 	-O $WALLPAPER
 nitrogen --set-zoom-fill $WALLPAPER --save
 bash $HOME/scripts/setcolorscheme
