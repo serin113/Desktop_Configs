@@ -1,14 +1,17 @@
 echo "Installing xorg..."
-pacaur -S xorg-server
+pacaur -S xorg-server --needed
 echo "Installing lightdm..."
-pacaur -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-litarvan
+pacaur -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-litarvan --needed
 echo "Configuring lightdm..."
 sudo nano /etc/lightdm/lightdm.conf
 sudo nano /etc/lightdm/lightdm-webkit2-greeter.conf
 sudo systemctl enable lightdm.service
 echo "Installing i3..."
-pacaur -S i3-wm i3pystatus-git
+pacaur -S i3-wm i3pystatus-git --needed
 echo "Installing pulseaudio..."
-pacaur -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils
+pacaur -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils --needed
 echo "Installing misc..."
-pacaur -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures compton
+pacaur -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures compton --needed
+pacaur -S nautilus-admin seahorse seahorse-nautilus --needed
+
+pacaur -S pkgfile zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting python-pywal --needed
