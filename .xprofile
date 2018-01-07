@@ -1,2 +1,3 @@
+xrandr --dpi 144
 export STEAM_RUNTIME=0
 export CLUTTER_VBLANK=none

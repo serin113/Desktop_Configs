@@ -1,24 +1,36 @@
 echo "Installing xorg..."
 pacaur -S xorg-server --needed
+
 echo "Installing lightdm..."
 pacaur -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-litarvan --needed
+
 echo "Configuring lightdm..."
-#sudo nano /etc/lightdm/lightdm.conf
-#sudo nano /etc/lightdm/lightdm-webkit2-greeter.conf
+if grep -Fxq "greeter-session=lightdm-webkit2-greeter" /etc/lightdm/lightdm.conf ; then
+	sudo nano /etc/lightdm/lightdm.conf
+fi
+if grep -Fxq "litarvan" /etc/lightdm/lightdm-webkit2-greeter.conf ; then
+	sudo nano /etc/lightdm/lightdm-webkit2-greeter.conf
+fi
 sudo systemctl enable lightdm.service
-echo "Installing i3..."
+
+echo "Installing i3 and i3pystatus dependencies..."
 pacaur -S i3-gaps i3pystatus-git python-pip xorg-xset python-dbus xorg-xprop xorg-xbacklight --needed
 pip install netifaces colour pytz psutil i3ipc
+
 echo "Installing pulseaudio..."
 pacaur -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils --needed
+
 echo "Installing misc..."
-pacaur -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures compton rofi xorg-xrandr reflector htop synergy qt5-base arandr vivaldi --needed
-pacaur -S nautilus-admin seahorse seahorse-nautilus --needed
+pacaur -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures \
+compton rofi xorg-xrandr reflector htop synergy qt5-base arandr vivaldi nautilus-admin seahorse \
+xorg-xdpyinfo seahorse-nautilus compton gedit--needed
 
+echo "Installing script dependencies..."
 pacaur -S pkgfile zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting python-pywal --needed
-
+echo "Installing fonts..."
 pacaur -S nitrogen adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-font-awesome --needed
 
+echo "Installing power and temp services..."
 pacaur -S tlp thermald lm_sensors
 sudo systemctl enable tlp.service
 sudo systemctl enable tlp-sleep.service
