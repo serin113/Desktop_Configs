@@ -18,3 +18,9 @@ pacaur -S nautilus-admin seahorse seahorse-nautilus --needed
 pacaur -S pkgfile zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting python-pywal --needed
 
 pacaur -S nitrogen adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-font-awesome --needed
+
+pacaur -S tlp
+sudo systemctl enable tlp.service
+sudo systemctl enable tlp-sleep.service
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket
