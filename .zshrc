@@ -92,3 +92,6 @@ alias xyzzy='echo Nothing happens.'
 alias java='java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 alias search='sudo updatedb; locate'
+
+#https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
