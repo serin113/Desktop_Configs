@@ -7,10 +7,14 @@
 #	--height 1080
 
 SEARCH=${1:-"skyline sunset"}
-
 SEARCH=${SEARCH// /%2C}
-rm $HOME/Wallpapers/current_wallpaper.png
+
+WALLPAPER=$HOME/Wallpapers/current_wallpaper.png
+
+if [ -f $WALLPAPER ]; then
+	rm $WALLPAPER
+fi
 wget "https://source.unsplash.com/random/1920x1080/?$SEARCH" \
-	-O $HOME/Wallpapers/current_wallpaper.png
-nitrogen --set-zoom-fill $HOME/Wallpapers/current_wallpaper.png --save
+	-O $WALLPAPER
+nitrogen --set-zoom-fill $WALLPAPER --save
 bash $HOME/scripts/setcolorscheme
