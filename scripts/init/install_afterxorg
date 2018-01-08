@@ -31,26 +31,29 @@ sudo systemctl enable lightdm.service
 
 echo "Installing i3 and i3pystatus dependencies..."
 $COMMAND -S i3-gaps i3pystatus-git python-pip xorg-xset python-dbus xorg-xprop xorg-xbacklight --needed
-pip install netifaces colour pytz psutil i3ipc
+#pip install netifaces colour pytz psutil i3ipc
+$COMMAND -S python-netifaces python-colour python-pytz python-psutil i3ipc-python-git --asdeps --needed
 
 echo "Installing pulseaudio..."
 $COMMAND -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils pavucontrol --needed
 
 echo "Installing misc..."
 $COMMAND -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures \
-compton rofi xorg-xrandr reflector htop synergy qt5-base arandr vivaldi nautilus-admin seahorse \
+compton rofi xorg-xrandr reflector htop synergy arandr vivaldi nautilus-admin seahorse \
 xorg-xdpyinfo seahorse-nautilus gedit unclutter-xfixes-git polkit-gnome xorg-xinput redshift \
-python-xdg xfce4-terminal xorg-xev --needed
+xfce4-terminal xorg-xev nitrogen --needed
+$COMMAND -S qt5-base python-xdg --asdeps --needed
 
 echo "Installing bluetooth and network GUIs..."
-$COMMAND -S blueman bluez bluez-utils networkmanager network-manager-applet --needed
+$COMMAND -S blueman bluez-utils networkmanager network-manager-applet --needed
+$COMMAND -S bluez --needed --asdeps
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable NetworkManager-wait-online.service
 
 echo "Installing script dependencies..."
 $COMMAND -S pkgfile zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting python-pywal --needed
 echo "Installing fonts..."
-$COMMAND -S nitrogen adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-font-awesome --needed
+$COMMAND -S adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-font-awesome --needed
 
 echo "Installing power and temp services..."
 $COMMAND -S tlp thermald lm_sensors --needed
