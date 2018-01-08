@@ -52,6 +52,7 @@ bindsym $mod+Print exec "$HOME/scripts/scrot"
 #	xfce4-terminal --drop-down &&\
 #	i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] move down 33 px'
 bindcode 135 exec --no-startup-id xfce4-terminal --drop-down
+bindcode $mod+59 exec --no-startup-id xfce4-terminal --drop-down
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d --release exec $HOME/scripts/rofi-run
 bindsym $mod+Tab --release exec $HOME/scripts/rofi-win

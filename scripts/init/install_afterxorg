@@ -30,7 +30,8 @@ pacaur -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils pavucontrol
 echo "Installing misc..."
 pacaur -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures \
 compton rofi xorg-xrandr reflector htop synergy qt5-base arandr vivaldi nautilus-admin seahorse \
-xorg-xdpyinfo seahorse-nautilus gedit unclutter-xfixes-git polkit-gnome xorg-xinput redshift python-xdg xfce4-terminal --needed
+xorg-xdpyinfo seahorse-nautilus gedit unclutter-xfixes-git polkit-gnome xorg-xinput redshift \
+python-xdg xfce4-terminal xorg-xev --needed
 
 echo "Installing bluetooth and network GUIs..."
 pacaur -S blueman bluez bluez-utils networkmanager network-manager-applet --needed
