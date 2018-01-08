@@ -1,11 +1,20 @@
+COMMAND="pacman"
+if pacman -Qsq pacaur ; then
+	if pacman -Qsq trizen ; then
+		COMMAND="trizen --noedit"
+	else
+		COMMAND="pacaur"
+	fi
+fi
+
 echo "Enabling NTP sync..."
 sudo timedatectl set-ntp true
 
 echo "Installing xorg..."
-pacaur -S xorg-server --needed
+$COMMAND -S xorg-server --needed
 
 echo "Installing lightdm..."
-pacaur -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-litarvan --needed
+$COMMAND -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-litarvan --needed
 
 echo "Configuring lightdm..."
 if grep -q "lightdm-webkit2-greeter" /etc/lightdm/lightdm.conf ; then
@@ -21,30 +30,30 @@ fi
 sudo systemctl enable lightdm.service
 
 echo "Installing i3 and i3pystatus dependencies..."
-pacaur -S i3-gaps i3pystatus-git python-pip xorg-xset python-dbus xorg-xprop xorg-xbacklight --needed
+$COMMAND -S i3-gaps i3pystatus-git python-pip xorg-xset python-dbus xorg-xprop xorg-xbacklight --needed
 pip install netifaces colour pytz psutil i3ipc
 
 echo "Installing pulseaudio..."
-pacaur -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils pavucontrol --needed
+$COMMAND -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils pavucontrol --needed
 
 echo "Installing misc..."
-pacaur -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures \
+$COMMAND -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures \
 compton rofi xorg-xrandr reflector htop synergy qt5-base arandr vivaldi nautilus-admin seahorse \
 xorg-xdpyinfo seahorse-nautilus gedit unclutter-xfixes-git polkit-gnome xorg-xinput redshift \
 python-xdg xfce4-terminal xorg-xev --needed
 
 echo "Installing bluetooth and network GUIs..."
-pacaur -S blueman bluez bluez-utils networkmanager network-manager-applet --needed
+$COMMAND -S blueman bluez bluez-utils networkmanager network-manager-applet --needed
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable NetworkManager-wait-online.service
 
 echo "Installing script dependencies..."
-pacaur -S pkgfile zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting python-pywal --needed
+$COMMAND -S pkgfile zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting python-pywal --needed
 echo "Installing fonts..."
-pacaur -S nitrogen adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-font-awesome --needed
+$COMMAND -S nitrogen adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-font-awesome --needed
 
 echo "Installing power and temp services..."
-pacaur -S tlp thermald lm_sensors --needed
+$COMMAND -S tlp thermald lm_sensors --needed
 sudo systemctl enable tlp.service
 sudo systemctl enable tlp-sleep.service
 sudo systemctl mask systemd-rfkill.service

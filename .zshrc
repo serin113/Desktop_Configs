@@ -77,7 +77,7 @@ ZSH_AUTOSUGGEST_ASYNC_PTY_NAME=zsh_autosuggest_pty
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-DEFAULT_USER=vulpes
+DEFAULT_USER=$(whoami)
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
