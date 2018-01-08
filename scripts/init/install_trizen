@@ -1,0 +1,7 @@
+git clone https://aur.archlinux.org/trizen.git
+cd trizen
+sudo pacman -S pacutils perl-libwww perl-term-ui perl-json \
+perl-data-dump perl-lwp-protocol-https --noconfirm --needed
+makepkg -i
+cd ..
+rm -rf trizen
