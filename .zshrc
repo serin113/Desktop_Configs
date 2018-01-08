@@ -95,3 +95,5 @@ alias search='sudo updatedb; locate'
 
 #https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+alias pacaur='printf "Using trizen instead, mumble mumble...\n"; trizen'
