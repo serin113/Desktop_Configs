@@ -41,7 +41,8 @@ echo "Installing misc..."
 $COMMAND -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures \
 compton rofi xorg-xrandr reflector htop synergy arandr vivaldi nautilus-admin seahorse \
 xorg-xdpyinfo seahorse-nautilus gedit unclutter-xfixes-git polkit-gnome xorg-xinput redshift \
-xfce4-terminal xorg-xev nitrogen --needed
+xfce4-terminal xorg-xev nitrogen \
+oomox transmission-gtk --needed
 $COMMAND -S qt5-base python-xdg --asdeps --needed
 
 echo "Installing bluetooth and network GUIs..."
