@@ -1,10 +1,9 @@
 COMMAND="pacman"
 if pacman -Qsq pacaur ; then
-	if pacman -Qsq trizen ; then
-		COMMAND="trizen --noedit"
-	else
-		COMMAND="pacaur"
-	fi
+	COMMAND="pacaur"
+fi
+if pacman -Qsq trizen ; then
+	COMMAND="trizen --noedit"
 fi
 
 echo "Enabling NTP sync..."
@@ -42,8 +41,11 @@ $COMMAND -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-act
 compton rofi xorg-xrandr reflector htop synergy arandr vivaldi nautilus-admin seahorse \
 xorg-xdpyinfo seahorse-nautilus gedit unclutter-xfixes-git polkit-gnome xorg-xinput redshift \
 xfce4-terminal xorg-xev nitrogen \
-oomox transmission-gtk --needed
+transmission-gtk --needed
 $COMMAND -S qt5-base python-xdg --asdeps --needed
+
+echo "Installing gtk themes..."
+$COMMAND -S oomox lxappearance-gtk3 capitaine-cursors la-capitaine-icon-theme-git --needed
 
 echo "Installing bluetooth and network GUIs..."
 $COMMAND -S blueman bluez-utils networkmanager network-manager-applet --needed
