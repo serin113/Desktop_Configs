@@ -9,7 +9,8 @@ fi
 echo "Installing accountsservice..."
 $COMMAND -S accountsservice wget --asdeps --needed
 
-URL=https://secure.gravatar.com/avatar/c7300b74c6c2a47f3180a83b1e317ef2?s=96
+SIZE=${1:-"192"} #96
+URL=https://secure.gravatar.com/avatar/c7300b74c6c2a47f3180a83b1e317ef2?s=$SIZE
 ICONPATH="/var/lib/AccountsService/icons/$(whoami)"
 ASPATH="/var/lib/AccountsService/users/$(whoami)"
 
