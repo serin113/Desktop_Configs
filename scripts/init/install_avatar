@@ -10,6 +10,14 @@ echo "Installing accountsservice..."
 $COMMAND -S accountsservice wget --asdeps --needed
 
 URL=https://secure.gravatar.com/avatar/c7300b74c6c2a47f3180a83b1e317ef2?s=96
-wget $URL -O $HOME/.face
-chmod 644 $HOME/.face
+ICONPATH="/var/lib/AccountsService/icons/$(whoami)"
+ASPATH="/var/lib/AccountsService/users/$(whoami)"
+
+wget $URL -O .temp
+sudo mv .temp $ICONPATH
+printf "[User]\nIcon=$ICONPATH\n" > .temp
+sudo mv .temp $ASPATH
+
+sudo chmod 644 $ICONPATH
+sudo chmod 644 $ASPATH
 
