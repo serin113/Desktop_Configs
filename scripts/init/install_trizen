@@ -5,3 +5,4 @@ perl-data-dump perl-lwp-protocol-https --noconfirm --needed
 makepkg -i
 cd ..
 rm -rf trizen
+trizen -S perl-json-xs perl-term-readline-gnu --asdeps --needed
