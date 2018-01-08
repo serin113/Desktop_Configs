@@ -1,0 +1,15 @@
+COMMAND="pacman"
+if pacman -Qsq pacaur ; then
+	COMMAND="pacaur"
+fi
+if pacman -Qsq trizen ; then
+	COMMAND="trizen --noedit"
+fi
+
+echo "Installing accountsservice..."
+$COMMAND -S accountsservice wget --asdeps --needed
+
+URL=https://secure.gravatar.com/avatar/c7300b74c6c2a47f3180a83b1e317ef2?s=96
+wget $URL -O $HOME/.face
+chmod 644 $HOME/.face
+
