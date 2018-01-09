@@ -6,62 +6,39 @@ if pacman -Qsq trizen ; then
 	COMMAND="trizen --noedit"
 fi
 
-echo "Enabling NTP sync..."
-sudo timedatectl set-ntp true
+echo "Installing background services..."
+$COMMAND -S clipit libinput-gestures rofi polkit-gnome --needed
 
-echo "Installing xorg..."
-$COMMAND -S xorg-server --needed
+echo "Installing terminal utilities..."
+$COMMAND -S playerctl htop xorg-xinput xorg-xev tldr --needed
 
-echo "Installing lightdm..."
-$COMMAND -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-litarvan --needed
+echo "Installing nautilus..."
+$COMMAND -S nautilus filemanager-actions nautilus-admin \
+file-roller --needed
 
-echo "Configuring lightdm..."
-if grep -q "lightdm-webkit2-greeter" /etc/lightdm/lightdm.conf ; then
-	:
-else
-	sudo nano /etc/lightdm/lightdm.conf
-fi
-if grep -q "litarvan" /etc/lightdm/lightdm-webkit2-greeter.conf ; then
-	:
-else
-	sudo nano /etc/lightdm/lightdm-webkit2-greeter.conf
-fi
-sudo systemctl enable lightdm.service
+echo "Installing seahorse..."
+$COMMAND -S seahorse seahorse-nautilus --needed
 
-echo "Installing i3 and i3pystatus dependencies..."
-$COMMAND -S i3-gaps i3pystatus-git python-pip i3ipc-python-git \
-i3lock-color-git python-pytz xorg-xset python-dbus xorg-xprop acpilight --needed
-#pip install netifaces colour pytz psutil i3ipc
-$COMMAND -S python-netifaces python-colour python-psutil --asdeps --needed
+echo "Installing display utilities..."
+$COMMAND -S dunst compton xorg-xrandr arandr xorg-xdpyinfo \
+unclutter-xfixes-git redshift nitrogen \
+python-pywal gnome-font-viewer --needed
+$COMMAND -S python-xdg --asdeps --needed
 
-echo "Installing pulseaudio..."
-$COMMAND -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils pavucontrol --needed
+echo "Installing pkgbrowser..."
+$COMMAND -S pkgbrowser --needed
 
-echo "Installing misc..."
-$COMMAND -S nautilus dunst clipit leafpad viewnior vlc playerctl filemanager-actions libinput-gestures \
-compton rofi xorg-xrandr reflector htop synergy arandr vivaldi nautilus-admin seahorse \
-xorg-xdpyinfo seahorse-nautilus gedit unclutter-xfixes-git polkit-gnome xorg-xinput redshift \
-xfce4-terminal xorg-xev nitrogen transmission-gtk tldr --needed
-$COMMAND -S qt5-base python-xdg --asdeps --needed
+echo "Installing internet utilities..."
+$COMMAND -S reflector synergy vivaldi transmission-gtk --needed
+$COMMAND -S qt5-base --asdeps --needed
 
 echo "Installing gtk themes..."
-$COMMAND -S oomox lxappearance-gtk3 capitaine-cursors la-capitaine-icon-theme-git --needed
+$COMMAND -S oomox lxappearance-gtk3 capitaine-cursors \
+la-capitaine-icon-theme-git --needed
 
-echo "Installing bluetooth and network GUIs..."
-$COMMAND -S blueman bluez-utils networkmanager network-manager-applet --needed
-$COMMAND -S bluez --needed --asdeps
-sudo systemctl enable NetworkManager.service
-sudo systemctl enable NetworkManager-wait-online.service
+echo "Installing tools..."
+$COMMAND -S leafpad gedit xfce4-terminal gnome-calculator \
+simplenote-electron-bin atom-editor-bin gnome-clocks --needed
 
-echo "Installing script dependencies..."
-$COMMAND -S pkgfile zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting python-pywal --needed
-echo "Installing fonts..."
-$COMMAND -S adobe-source-code-pro-fonts adobe-source-sans-pro-fonts ttf-font-awesome --needed
-
-echo "Installing power and temp services..."
-$COMMAND -S tlp thermald lm_sensors --needed
-sudo systemctl enable tlp.service
-sudo systemctl enable tlp-sleep.service
-sudo systemctl mask systemd-rfkill.service
-sudo systemctl mask systemd-rfkill.socket
-sudo systemctl enable thermald
+echo "Installing media applications..."
+$COMMAND -S viewnior vlc spotify --needed
