@@ -29,7 +29,8 @@ fi
 sudo systemctl enable lightdm.service
 
 echo "Installing i3 and i3pystatus dependencies..."
-$COMMAND -S i3-gaps i3pystatus-git python-pip i3ipc-python-git python-pytz xorg-xset python-dbus xorg-xprop acpilight --needed
+$COMMAND -S i3-gaps i3pystatus-git python-pip i3ipc-python-git \
+i3lock-color-git python-pytz xorg-xset python-dbus xorg-xprop acpilight --needed
 #pip install netifaces colour pytz psutil i3ipc
 $COMMAND -S python-netifaces python-colour python-psutil --asdeps --needed
 
