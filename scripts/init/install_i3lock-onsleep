@@ -1,0 +1,10 @@
+#https://gist.github.com/victorhaggqvist/603125bbc0f61a787d89
+
+printf "[Unit]\nDescription=Lock screen on resume from suspend\
+	\n\n[Service]\nUser=$(whoami)\nType=forking\nEnvironment=DISPLAY=:0\
+	\nExecStart=$HOME/scripts/lock\n\n[Install]\nWantedBy=sleep.target\
+	\nWantedBy=suspend.target" > .temp
+
+sudo mv .temp /etc/systemd/system/wakelock.service
+
+sudo systemctl enable wakelock.service
