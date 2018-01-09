@@ -4,6 +4,7 @@ getXCol () {
 	echo	$(xrdb -query |
 			grep "*color$1:.*#" |
 			cut -d"#" -f2)
+#	echo $(sed "$(($1+1))q;d" $HOME/.cache/wal/colors)
 }
 
 BG="#$(getXCol 0)"
@@ -13,7 +14,7 @@ CRIT="#$(getXCol 9)"
 NORM="#$(getXCol 2)"
 LOW="#$(getXCol 2)"
 
-$(killall dunst)
+killall dunst
 dunst \
 	-lb "$BG" -nb "$BG" -cb "$BG" \
 	-lf "$FG" -nf "$FG" -cf "$FG" \

@@ -3,6 +3,6 @@ BG=$(cat $HOME/.config/nitrogen/bg-saved.cfg | grep 'file=' | cut -d '=' -f2)
 wal -c
 wal -i "$BG" -n
 rm $HOME/.Xresources
-mv $HOME/.cache/wal/colors-rofi.Xresources $HOME/.Xresources
+mv $HOME/.cache/wal/colors.Xresources $HOME/.Xresources
 xrdb -load $HOME/.Xresources
 bash $HOME/scripts/launchdunst &
