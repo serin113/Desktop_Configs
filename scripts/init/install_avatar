@@ -5,9 +5,19 @@ fi
 if pacman -Qsq trizen ; then
 	COMMAND="trizen --noedit"
 fi
-
-echo "Installing accountsservice..."
-$COMMAND -S accountsservice wget --asdeps --needed
+if pacman -Qsq accountsservice ; then
+	:
+else
+	echo "Installing accountsservice..."
+	$COMMAND -S accountsservice --asdeps --needed
+fi
+if pacman -Qsq wget ; then
+	:
+else
+	echo "Installing wget..."
+	$COMMAND -S wget --asdeps --needed
+fi
+	
 
 SIZE=${1:-"192"} #96
 URL=https://secure.gravatar.com/avatar/c7300b74c6c2a47f3180a83b1e317ef2?s=$SIZE
