@@ -1,0 +1,2 @@
+#!/bin/bash
+xbacklight -ctrl $(ls /sys/class/leds/ | grep kbd_backlight) "$@"
