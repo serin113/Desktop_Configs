@@ -35,8 +35,8 @@ i3lock\
 	--date-align 1\
 	--datecolor=$MAINCOL\
 	--veriftext=""\
-	--wrongtext=""\
-	--statusfont="FontAwesome"\
+	--wrongtext=""\
+	--statusfont="Font Awesome 5 Free"\
 	--textsize=40\
 	--radius=60\
 	--ring-width=20\
