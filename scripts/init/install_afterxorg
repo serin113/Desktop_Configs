@@ -13,8 +13,7 @@ echo "Installing terminal utilities..."
 $COMMAND -S playerctl htop xorg-xinput xorg-xev tldr --needed
 
 echo "Installing nautilus..."
-$COMMAND -S nautilus filemanager-actions nautilus-admin \
-file-roller --needed
+$COMMAND -S nautilus filemanager-actions file-roller --needed
 
 echo "Installing seahorse..."
 $COMMAND -S seahorse seahorse-nautilus --needed
