@@ -42,3 +42,4 @@ simplenote-electron-bin atom-editor-bin gnome-clocks --needed
 
 echo "Installing media applications..."
 $COMMAND -S viewnior vlc spotify --needed
+$COMMAND -S ffmpeg0.10 zenity --asdeps --needed
