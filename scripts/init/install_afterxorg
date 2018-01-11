@@ -9,6 +9,17 @@ fi
 echo "Installing background services..."
 $COMMAND -S clipit libinput-gestures rofi polkit-gnome --needed
 
+echo "Installing printer utilities..."
+$COMMAND -S cups cups-pdf avahi --needed
+sudo systemctl enable org.cups.cupsd.service
+sudo systemctl enable avahi-daemon.service
+sudo systemctl start org.cups.cupsd.service
+sudo usermod -aG lp $(whoami)
+sudo usermod -aG sys $(whoami)
+$COMMAND -S hplip --needed
+sudo systemctl restart org.cups.cupsd.service
+$COMMAND -S simple-scan --needed
+
 echo "Installing terminal utilities..."
 $COMMAND -S playerctl htop xorg-xinput xorg-xev tldr --needed
 
@@ -27,30 +38,24 @@ $COMMAND -S python-xdg --asdeps --needed
 echo "Installing pkgbrowser..."
 $COMMAND -S pkgbrowser --needed
 
-echo "Installing internet utilities..."
-$COMMAND -S reflector synergy vivaldi transmission-gtk --needed
-$COMMAND -S qt5-base --asdeps --needed
-
 echo "Installing gtk themes..."
 $COMMAND -S oomox lxappearance-gtk3 capitaine-cursors \
 adapta-gtk-theme la-capitaine-icon-theme-git --needed
 
 echo "Installing tools..."
-$COMMAND -S leafpad gedit xfce4-terminal gnome-calculator \
+$COMMAND -S leafpad gedit xfce4-terminal rxvt-unicode gnome-calculator \
 simplenote-electron-bin atom-editor-bin gnome-clocks --needed
 export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'leafpad'; else echo 'nano'; fi)"
 export VISUAL="$(if [[ -n $DISPLAY ]]; then echo 'gedit'; else echo 'nano'; fi)"
+#http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 
-echo "Installing cups..."
-$COMMAND -S cups cups-pdf avahi --needed
-sudo systemctl enable org.cups.cupsd.service
-sudo systemctl enable avahi-daemon.service
-sudo systemctl start org.cups.cupsd.service
-sudo usermod -aG lp $(whoami)
-sudo usermod -aG sys $(whoami)
-$COMMAND -S hplip --needed
-sudo systemctl restart org.cups.cupsd.service
+echo "Installing internet utilities..."
+$COMMAND -S reflector synergy vivaldi transmission-gtk --needed
+$COMMAND -S qt5-base --asdeps --needed
 
 echo "Installing media applications..."
 $COMMAND -S viewnior vlc spotify --needed
 $COMMAND -S ffmpeg0.10 zenity --asdeps --needed
+
+echo "Installing chat applications..."
+$COMMAND -S telegram-desktop discord --needed
