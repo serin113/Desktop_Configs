@@ -38,6 +38,18 @@ adapta-gtk-theme la-capitaine-icon-theme-git --needed
 echo "Installing tools..."
 $COMMAND -S leafpad gedit xfce4-terminal gnome-calculator \
 simplenote-electron-bin atom-editor-bin gnome-clocks --needed
+export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'leafpad'; else echo 'nano'; fi)"
+export VISUAL="$(if [[ -n $DISPLAY ]]; then echo 'gedit'; else echo 'nano'; fi)"
+
+echo "Installing cups..."
+$COMMAND -S cups cups-pdf avahi --needed
+sudo systemctl enable org.cups.cupsd.service
+sudo systemctl enable avahi-daemon.service
+sudo systemctl start org.cups.cupsd.service
+sudo usermod -aG lp $(whoami)
+sudo usermod -aG sys $(whoami)
+$COMMAND -S hplip --needed
+sudo systemctl restart org.cups.cupsd.service
 
 echo "Installing media applications..."
 $COMMAND -S viewnior vlc spotify --needed

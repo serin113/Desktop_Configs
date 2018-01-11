@@ -1,11 +1,8 @@
-echo "Checking for system updates..."
+echo "Installing system updates..."
 sudo pacman -Syu
 
-echo "Checking base-devel..."
+echo "Installing base-devel..."
 sudo pacman -S base-devel --needed
 
-sudo pacman -S \
-mlocate \
-zsh \
-git \
-wget
+echo "Installing utilities..."
+sudo pacman -S mlocate zsh git wget nano --needed
