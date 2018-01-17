@@ -152,7 +152,7 @@ icon_position = left
 max_icon_size = 30
 
 # Paths to default icons.
-icon_folders = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
+icon_path = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
 
 frame_width = 3
 frame_color = "#8EC07C"
@@ -181,21 +181,21 @@ context = ctrl+shift+period
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
-#frame_color = "#6699ff"
-#foreground = "#6699ff"
-#background = "#191311"
+frame_color = "#6699ff"
+foreground = "#6699ff"
+background = "#191311"
 timeout = 5
 
 [urgency_normal]
-#frame_color = "#7fd22c"
-#foreground = "#7fd22c"
-#background = "#191311"
+frame_color = "#7fd22c"
+foreground = "#7fd22c"
+background = "#191311"
 timeout = 10
 
 [urgency_critical]
-#frame_color = "#fe5124"
-#foreground = "#fe5124"
-#background = "#191311"
+frame_color = "#fe5124"
+foreground = "#fe5124"
+background = "#191311"
 timeout = 30
 
 

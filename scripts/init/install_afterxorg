@@ -40,7 +40,8 @@ $COMMAND -S pkgbrowser --needed
 
 echo "Installing gtk themes..."
 $COMMAND -S oomox lxappearance-gtk3 capitaine-cursors \
-adapta-gtk-theme la-capitaine-icon-theme-git --needed
+adapta-gtk-theme la-capitaine-icon-theme-git \
+paper-icon-theme-git --needed
 
 echo "Installing tools..."
 $COMMAND -S leafpad gedit xfce4-terminal rxvt-unicode gnome-calculator \
