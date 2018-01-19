@@ -3,19 +3,19 @@ if pacman -Qsq pacaur ; then
 	COMMAND="pacaur"
 fi
 if pacman -Qsq trizen ; then
-	COMMAND="trizen --noedit"
+	COMMAND="trizen --noedit --noinfo --needed"
 fi
 if pacman -Qsq accountsservice ; then
 	:
 else
 	echo "Installing accountsservice..."
-	$COMMAND -S accountsservice --asdeps --needed
+	$COMMAND -S accountsservice --asdeps
 fi
 if pacman -Qsq wget ; then
 	:
 else
 	echo "Installing wget..."
-	$COMMAND -S wget --asdeps --needed
+	$COMMAND -S wget --asdeps
 fi
 	
 

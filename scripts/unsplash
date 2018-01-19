@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#unsplash-wallpaper -f \
-#	-q skyline,sunset \
-#	-d $HOME/CommonFiles/Wallpapers/Unsplashed \
-#	--width 1920 \
-#	--height 1080
-
 SEARCH=${1:-"skyline sunset"}
 SEARCH=${SEARCH// /%2C}
 
@@ -22,6 +16,7 @@ if [ ! -d $WALLPAPERPATH ]; then
 	mkdir $WALLPAPERPATH
 fi
 wget "https://source.unsplash.com/random/$RES/?$SEARCH" \
-	-O $WALLPAPER
+	-O $WALLPAPER \
+	-c -nv --progress=bar:force --show-progress
 nitrogen --set-zoom-fill $WALLPAPER --save
 bash $HOME/scripts/setcolorscheme

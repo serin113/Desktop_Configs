@@ -3,17 +3,17 @@ if pacman -Qsq pacaur ; then
 	COMMAND="pacaur"
 fi
 if pacman -Qsq trizen ; then
-	COMMAND="trizen --noedit"
+	COMMAND="trizen --noedit --noinfo --needed"
 fi
 
 echo "Enabling NTP sync..."
 sudo timedatectl set-ntp true
 
 echo "Installing xorg..."
-$COMMAND -S xorg-server --needed
+$COMMAND -S xorg-server
 
 echo "Installing lightdm..."
-$COMMAND -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-litarvan --needed
+$COMMAND -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-litarvan
 
 echo "Configuring lightdm..."
 if grep -q "lightdm-webkit2-greeter" /etc/lightdm/lightdm.conf ; then
@@ -30,28 +30,28 @@ sudo systemctl enable lightdm.service
 
 echo "Installing i3 and i3pystatus dependencies..."
 $COMMAND -S i3-gaps i3pystatus-git python-pip i3ipc-python-git \
-i3lock-color-git python-pytz xorg-xset python-dbus xorg-xprop acpilight --needed
-$COMMAND -S python-netifaces python-colour python-psutil --asdeps --needed
+i3lock-color-git python-pytz xorg-xset python-dbus xorg-xprop acpilight
+$COMMAND -S python-netifaces python-colour python-psutil --asdeps
 ./install_i3lock-onsleep
 
 echo "Installing pulseaudio..."
-$COMMAND -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils pavucontrol --needed
+$COMMAND -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils pavucontrol
 
 echo "Installing bluetooth and network GUIs..."
-$COMMAND -S blueman bluez-utils networkmanager network-manager-applet --needed
-$COMMAND -S bluez --needed --asdeps
+$COMMAND -S blueman bluez-utils networkmanager network-manager-applet
+$COMMAND -S bluez --asdeps
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable NetworkManager-wait-online.service
 
 echo "Installing script dependencies..."
 $COMMAND -S pkgfile zsh-autosuggestions \
-zsh-history-substring-search zsh-syntax-highlighting --needed
+zsh-history-substring-search zsh-syntax-highlighting
 echo "Installing fonts..."
 $COMMAND -S adobe-source-code-pro-fonts \
-adobe-source-sans-pro-fonts ttf-font-awesome --needed
+adobe-source-sans-pro-fonts ttf-font-awesome
 
 echo "Installing power and temp services..."
-$COMMAND -S tlp thermald lm_sensors --needed
+$COMMAND -S tlp thermald lm_sensors
 sudo systemctl enable tlp.service
 sudo systemctl enable tlp-sleep.service
 sudo systemctl mask systemd-rfkill.service
@@ -59,7 +59,7 @@ sudo systemctl mask systemd-rfkill.socket
 sudo systemctl enable thermald
 
 echo "Installing ufw..."
-$COMMAND -S ufw gufw --needed
+$COMMAND -S ufw gufw
 sudo ufw enable
 sudo systemctl enable ufw
 
