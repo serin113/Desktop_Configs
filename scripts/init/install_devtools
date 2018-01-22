@@ -1,0 +1,16 @@
+COMMAND="pacman"
+if pacman -Qsq pacaur ; then
+	COMMAND="pacaur"
+fi
+if pacman -Qsq trizen ; then
+	COMMAND="trizen --noedit --noinfo --needed"
+fi
+
+$COMMAND -S android-tools \
+	flex bison \
+	gcc gcc-fortran valgrind \
+	jdk8-openjdk \
+	qemu \
+	racket racket-docs \
+	swi-prolog \
+	wireshark-gtk
