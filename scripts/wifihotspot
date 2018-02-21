@@ -3,6 +3,7 @@ sudo create_ap\
 	--freq-band 2.4\
 	--dhcp-dns 8.8.8.8,8.8.4.4\
 	-m nat\
+	-c 3\
 	--ieee80211ac\
 	--ieee80211n\
-	wlp4s0 wlp4s0 mirr0r babyshark22
+	wlp4s0 wlp4s0 xyzzy nanobot321

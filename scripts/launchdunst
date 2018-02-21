@@ -15,7 +15,8 @@ NORM="#$(getXCol 2)"
 LOW="#$(getXCol 2)"
 
 killall dunst
-dunst \
-	-lb "$BG" -nb "$BG" -cb "$BG" \
-	-lf "$FG" -nf "$FG" -cf "$FG" \
-	-lfr "$LOW" -nfr "$NORM" -cfr "$CRIT" &
+#dunst \
+#	-lb "$BG" -nb "$BG" -cb "$BG" \
+#	-lf "$FG" -nf "$FG" -cf "$FG" \
+#	-lfr "$LOW" -nfr "$NORM" -cfr "$CRIT" &
+dunst &

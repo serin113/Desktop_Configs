@@ -1,5 +1,10 @@
 #!/bin/bash
-scrot -q 75 -s -e 'mv $f ~/Pictures/Screenshots/; echo $f > ".scrtxt"' '%d-%b-%y_%T.png'
-sleep 1
-notify-send -t 3000 -u low "Screenshot taken." $(cat ".scrtxt")
-rm ".scrtxt"
+
+#DIRECTORY = $(zenity --file-selection --save)
+#scrot -d 1 -s -q 100 '%d-%b-%y_%T.png' -e 'mv $f $DIRECTORY' && \
+#sleep 1 && \
+
+scrot -d 1 -s -q 100 'scrot.png' -e 'mv $f ~/.cache' && \
+file="$(zenity --file-selection --save)" && \
+mv "$HOME/.cache/scrot.png" "$file" && \
+notify-send -t 3000 -u low "Screenshot taken." "$file"

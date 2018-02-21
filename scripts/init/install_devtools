@@ -13,4 +13,9 @@ $COMMAND -S android-tools \
 	qemu \
 	racket racket-docs \
 	swi-prolog \
-	wireshark-gtk
+	wireshark-gtk \
+	octave \
+	nodejs electron \
+	python python2
+	
+sudo gpasswd -a $USER wireshark
