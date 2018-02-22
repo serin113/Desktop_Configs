@@ -1,7 +1,8 @@
 #!/bin/bash
 BG=$(cat $HOME/.config/nitrogen/bg-saved.cfg | grep 'file=' | cut -d '=' -f2)
 #wal -cq
-wal -i "$BG" -ngq
+wal -i "$BG" -nsglq
+wal -i "$BG" -nq
 #rm $HOME/.Xresources
 #mv $HOME/.cache/wal/colors-rofi.Xresources $HOME/.Xresources
 #xrdb -load $HOME/.Xresources
