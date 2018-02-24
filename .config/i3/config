@@ -27,12 +27,15 @@ floating_maximum_size 1900 x 1060
 
 
 # window rules
+# fix for stolen focus on opening new window
+no_focus [tiling]
 for_window [class=".*"] border pixel 3
 for_window [class="(?i)nm-connection-editor"] floating enable, sticky enable
 for_window [class="(?i)blueman-manager"] floating enable, sticky enable
 for_window [class="(?i)viewnior"] floating enable
 for_window [class="(?i)arandr"] floating enable, sticky enable
 for_window [class="(?i)synergy"] floating enable, sticky enable
+for_window [window_role="(?i)xfce4-terminal-dropdown"] floating enable, sticky enable
 
 
 # help key bindings

@@ -21,7 +21,7 @@ sudo systemctl restart org.cups.cupsd.service
 $COMMAND -S simple-scan --needed
 
 echo "Installing terminal utilities..."
-$COMMAND -S playerctl htop xorg-xinput xorg-xev tldr
+$COMMAND -S playerctl htop xorg-xinput xorg-xev tldr traceroute
 
 echo "Installing nautilus..."
 $COMMAND -S nautilus filemanager-actions file-roller
