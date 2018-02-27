@@ -46,7 +46,7 @@ $COMMAND -S gtk-engine-murrine --asdeps
 
 echo "Installing tools..."
 $COMMAND -S leafpad gedit xfce4-terminal rxvt-unicode gnome-calculator \
-simplenote-electron-bin atom-editor-bin gnome-clocks
+simplenote-electron-bin atom-editor-bin gnome-clocks scrot xclip
 export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'leafpad'; else echo 'nano'; fi)"
 export VISUAL="$(if [[ -n $DISPLAY ]]; then echo 'gedit'; else echo 'nano'; fi)"
 #http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#DIRECTORY = $(zenity --file-selection --save)
+#scrot -d 1 -s -q 100 '%d-%b-%y_%T.png' -e 'mv $f $DIRECTORY' && \
+#sleep 1 && \
+
+scrot -d 1 -s -q 100 'scrot.png' \
+	-e 'xclip -selection clipboard -t image/png $f' && \
+rm scrot.png && \
+notify-send -t 3000 -u low "Screenshot taken."
