@@ -12,7 +12,7 @@ alias help=run-help
 autoload -Uz compinit promptinit
 compinit -i
 promptinit
-source $HOME/agnoster.zsh-theme
+source $HOME/.agnoster.zsh-theme
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
 

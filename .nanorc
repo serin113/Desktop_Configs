@@ -1,0 +1,9 @@
+set constantshow
+set linenumbers
+set mouse
+set selectedcolor black,white
+set smarthome
+set smooth
+set softwrap
+set tabsize 4
+bind ^S writeout main
