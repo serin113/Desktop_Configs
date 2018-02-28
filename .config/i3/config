@@ -205,7 +205,7 @@ client.urgent			$urgentCol $urgentCol $textCol $indCol $urgentCol
 
 # i3-bar 1
 bar {
-    status_command    python $HOME/status.py "$mainCol" "$mainActiveCol" "$secondCol" "$inactiveTextCol" "$bg"
+    status_command    python $HOME/.pystatus "$mainCol" "$mainActiveCol" "$secondCol" "$inactiveTextCol" "$bg"
     position          top
     workspace_buttons yes
     colors {
