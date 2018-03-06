@@ -98,3 +98,4 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias trizen='trizen --noedit --show-ood'
 alias pacaur='printf "Using trizen instead, mumble mumble...\n"; trizen'
+alias screenfetch='printf "Using neofetch instead, mumble mumble...\n"; neofetch'

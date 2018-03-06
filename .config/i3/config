@@ -177,7 +177,8 @@ exec --no-startup-id xrdb -load ~/.Xresources &
 exec --no-startup-id redshift-gtk -l 14:121 -t 6500:2900 &
 exec --no-startup-id nitrogen --restore &
 exec --no-startup-id wal -Rn &
-exec --no-startup-id hardcode-tray --conversion-tool RSVGConvert --size 22 --theme Papirus -a &
+#exec --no-startup-id hardcode-tray --conversion-tool RSVGConvert --size 22 --theme Papirus -a &
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 # i3 color variables
@@ -236,3 +237,5 @@ bar {
 #	modifier $mod
 	binding_mode_indicator yes
 }
+
+
