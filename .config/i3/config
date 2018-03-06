@@ -167,13 +167,13 @@ exec --no-startup-id gnome-keyring-daemon --start &
 exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Device Enabled" 1 &
 exec --no-startup-id libinput-gestures-setup start &
 exec --no-startup-id export SSH_AUTH_SOCK &
-exec --no-startup-id compton --config "$HOME/compton.conf" &
+exec --no-startup-id compton --config "$HOME/.compton" &
 exec --no-startup-id $HOME/scripts/launchdunst &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id nm-applet &
 exec --no-startup-id clipit -d &
 exec --no-startup-id unclutter --timeout 10 --exclude-root &
-exec --no-startup-id xrdb -load ~/.Xresources &
+#exec --no-startup-id xrdb -load ~/.Xresources &
 exec --no-startup-id redshift-gtk -l 14:121 -t 6500:2900 &
 exec --no-startup-id nitrogen --restore &
 exec --no-startup-id wal -Rn &

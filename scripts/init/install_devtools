@@ -16,6 +16,7 @@ $COMMAND -S android-tools \
 	wireshark-gtk \
 	octave \
 	nodejs electron \
-	python python2
+	python python2 \
+	python-scikit-learn
 	
 sudo gpasswd -a $USER wireshark
