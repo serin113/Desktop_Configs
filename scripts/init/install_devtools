@@ -17,6 +17,8 @@ $COMMAND -S android-tools \
 	octave \
 	nodejs electron \
 	python python2 \
-	python-scikit-learn
+	python-scikit-learn \
+	python-matplotlib \
+	opencv
 	
 sudo gpasswd -a $USER wireshark

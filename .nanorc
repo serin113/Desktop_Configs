@@ -7,3 +7,4 @@ set smooth
 set softwrap
 set tabsize 4
 bind ^S writeout main
+bind ^F whereis main
