@@ -6,9 +6,27 @@ if pacman -Qsq trizen ; then
 	COMMAND="trizen --noedit --noinfo --needed"
 fi
 
+# android-tools:		adb stuff
+# flex+bison:			interpreter/compiler stuff
+# gcc+valgrind:			C/C++ compile and debug
+# gcc-fortran:			fortran compile
+# jdk8-openjdk:			java stuff
+# qemu:					OS VM stuff
+# racket+raacket-docs:	racket stuff
+# swi-prolog:			prolog interpreter
+# wireshark-gtk:		packet capture stuff
+# octave:				matlab-like
+# nodejs+electron:		app dev stuff
+# python python2:		python base
+# python-scikit-learn:	machine learning stuff
+# python-matplotlib:	plotting stuff
+# opencv:				computer vision stuff
+# python-nltk:			language analysis stuff
+
 $COMMAND -S android-tools \
 	flex bison \
-	gcc gcc-fortran valgrind \
+	gcc valgrind \
+	gcc-fortran \
 	jdk8-openjdk \
 	qemu \
 	racket racket-docs \
