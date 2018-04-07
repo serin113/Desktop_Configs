@@ -44,7 +44,7 @@ bindsym --release $mod+Shift+z exec $HOME/scripts/dunstref
 
 
 # program launch key bindings
-bindsym $mod+b --release exec nautilus --no-desktop --new-window
+bindsym $mod+b --release exec nautilus --new-window
 bindsym $mod+g --release exec gedit --new-window
 bindsym $mod+Shift+g --release exec gedit --new-window $HOME/.config/i3/config
 bindsym $mod+p --release exec arandr
@@ -57,10 +57,8 @@ bindsym $mod+Shift+Print --release exec "$HOME/scripts/scrot_noprompt"
 #	i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] move down 33 px'
 bindcode 135 exec --no-startup-id xfce4-terminal --drop-down
 bindcode $mod+59 exec --no-startup-id xfce4-terminal --drop-down
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d --release exec $HOME/scripts/rofi-run
 bindsym $mod+Tab --release exec $HOME/scripts/rofi-win
-# bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec xfce4-terminal
 
 
@@ -173,12 +171,12 @@ exec --no-startup-id blueman-applet &
 exec --no-startup-id nm-applet &
 exec --no-startup-id clipit -d &
 exec --no-startup-id unclutter --timeout 10 --exclude-root &
-#exec --no-startup-id xrdb -load ~/.Xresources &
+#exec --no-startup-id xrdb -load ~/.cache/wal/colors.Xresources &
 exec --no-startup-id redshift-gtk -l 14:121 -t 6500:2900 &
 exec --no-startup-id nitrogen --restore &
 exec --no-startup-id wal -Rn &
 #exec --no-startup-id hardcode-tray --conversion-tool RSVGConvert --size 22 --theme Papirus -a &
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/scripts/launchpolybar $HOME/.polybar mainbar
 
 
 # i3 color variables
@@ -204,38 +202,39 @@ client.focused_inactive $mainInactiveCol $mainInactiveCol $inactiveTextCol $indI
 client.unfocused        $mainInactiveCol $mainInactiveCol $inactiveTextCol $indInactiveCol $mainInactiveCol
 client.urgent			$urgentCol $urgentCol $textCol $indCol $urgentCol
 
-# i3-bar 1
-bar {
-    status_command    python $HOME/.pystatus "$mainCol" "$mainActiveCol" "$secondCol" "$inactiveTextCol" "$bg"
-    position          top
-    workspace_buttons yes
-    colors {
-		background $bg
-		focused_workspace	$mainCol $mainCol $textCol
-		active_workspace	$mainActiveCol $mainActiveCol $textCol
-		inactive_workspace	$mainInactiveCol $mainInactiveCol $inactiveTextCol
-		urgent_workspace	$urgentCol $urgentCol $textCol
-		binding_mode		$bindingCol $bindingCol $textCol
-    }
-#	font pango:FontAwesome 10, Source Sans Pro 12
-	font pango:Source Sans Pro 12
-#	font pango:FontAwesome 10, Terminus (TTF) 13
-#	font pango:FontAwesome 10, Monofur 12
-#	font pango:eurofurence 13
-#	font pango:Source Sans Pro 12
-#	font pango:Helvetica 11
-    tray_padding 3 
-	separator_symbol " "
-	height 25
-#	i3bar_command i3bar -t
-    i3bar_command i3bar
-#	tray_output none
-    binding_mode_indicator no
-    id top-bar
-    mode dock
-#	hidden_state hide
-#	modifier $mod
-	binding_mode_indicator yes
-}
+# # i3-bar 1
+# bar {
+# #    status_command    python $HOME/.pystatus "$mainCol" "$mainActiveCol" "$secondCol" "$inactiveTextCol" "$bg"
+#     position          top
+#     workspace_buttons yes
+#     colors {
+# 		background $bg
+# 		focused_workspace	$mainCol $mainCol $textCol
+# 		active_workspace	$mainActiveCol $mainActiveCol $textCol
+# 		inactive_workspace	$mainInactiveCol $mainInactiveCol $inactiveTextCol
+# 		urgent_workspace	$urgentCol $urgentCol $textCol
+# 		binding_mode		$bindingCol $bindingCol $textCol
+#     }
+# #	font pango:FontAwesome 10, Source Sans Pro 12
+# 	font pango:Source Sans Pro 12
+# #	font pango:FontAwesome 10, Terminus (TTF) 13
+# #	font pango:FontAwesome 10, Monofur 12
+# #	font pango:eurofurence 13
+# #	font pango:Source Sans Pro 12
+# #	font pango:Helvetica 11
+#     tray_padding 3 
+# 	separator_symbol " "
+# 	height 25
+# #	i3bar_command i3bar -t
+# #    i3bar_command i3bar
+# 	status_command polybar --config=$HOME/.polybar mainbar
+# #	tray_output none
+#     binding_mode_indicator no
+#     id top-bar
+#     mode dock
+# #	hidden_state hide
+# #	modifier $mod
+# 	binding_mode_indicator yes
+# }
 
 

@@ -22,13 +22,13 @@ i3lock\
 	--composite\
 	-s\
 	-c $BGCOL\
-	--timefont="$FONT"\
+	--time-font="$FONT"\
 	--timesize=$TIMESIZE\
 	--timestr="%H:%M"\
-	--timepos="x+w-cw-$CMARGIN:y+h-(ch/2)-$CMARGIN"\
+	--timepos="x+w-$CMARGIN:y+h-$CMARGIN"\
 	--time-align 2\
 	--timecolor=$MAINCOL\
-	--datefont="$FONT"\
+	--date-font="$FONT"\
 	--datesize=$DATESIZE\
 	--datestr="%a, %e %b %Y"\
 	--datepos="x+$CMARGIN:ty"\
@@ -36,11 +36,14 @@ i3lock\
 	--datecolor=$MAINCOL\
 	--veriftext=""\
 	--wrongtext=""\
-	--statusfont="Font Awesome 5 Free"\
-	--textsize=40\
+	--verif-font="Font Awesome 5 Free"\
+	--wrong-font="Font Awesome 5 Free"\
+	--verifsize=40\
+	--wrongsize=40\
 	--radius=60\
 	--ring-width=20\
-	--textcolor=$URGCOL\
+	--verifcolor=$URGCOL\
+	--wrongcolor=$URGCOL\
 	--separatorcolor=$BGCOL$TRANS\
 	--keyhlcolor=$SECCOL\
 	--bshlcolor=$URGCOL\

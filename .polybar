@@ -1,5 +1,5 @@
-main mainactive second inactivetext bg
-2 7 15 8 0
+;main mainactive second inactivetext bg
+;2 7 15 8 0
 
 [colors]
 primary = ${xrdb:color2}
@@ -10,29 +10,31 @@ bg = ${xrdb:color0}
 urgent = ${xrdb:color9}
 
 [bar/mainbar]
-bottom = true
+bottom = false
 width = 100%
 height = 25
 background = ${colors.bg}
 foreground = ${colors.second}
 ;radius = 10.0
-line-size = 1
+line-size = 2
 line-color = ${colors.primary}
 ;border-size = 3
 ;border-color = ${colors.primary}
-font-0 = Source Sans Pro:size=12
-font-1 = Source Sans Pro:bold:size=12
-font-2 = FontAwesome:size=10
-fixed-center = false
+font-0 = Source Sans Pro:size=12;3
+font-1 = Source Sans Pro:Bold:size=12;3
+font-2 = Font Awesome 5 Free:style=Solid:size=10;2
+font-3 = Source Code Pro:size=12;3
+fixed-center = true
 tray-position = right
-tray-maxsize = 19
-
+tray-maxsize = 20
+padding-right = 6
 modules-left = i3
 modules-center = title
-modules-right = battery date
-
+modules-right = cpu memory backlight volume battery date
+module-margin = 3
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
+monitor = ${env:MONITOR:eDP1}
 
 
 [module/i3]
@@ -41,6 +43,13 @@ pin-workspaces = true
 ;strip-wsnumbers = true
 ;index-sort = true
 ;reverse-scroll = false
+
+format = <label-state> <label-mode>
+
+label-mode = %{T2}%mode%%{T-}
+label-mode-foreground = ${colors.bg}
+label-mode-background = ${colors.urgent}
+label-mode-padding = 2
 
 label-focused-foreground = ${colors.primary}
 label-focused-underline = ${colors.primary}
@@ -51,7 +60,8 @@ label-unfocused-padding = 2
 label-visible-underline = ${colors.second}
 label-visible-padding = 2
 
-label-urgent-foreground = ${colors.urgent}
+label-urgent-foreground = ${colors.bg}
+label-urgent-background = ${colors.urgent}
 label-urgent-padding = 2
 
 
@@ -68,12 +78,66 @@ label-maxlen = 75
 label-font = 2
 
 
+[module/cpu]
+type = internal/cpu
+format = CPU <ramp-coreload>
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+format-foreground = ${colors.primary}
+format-underline = ${colors.primary}
+
+
+[module/memory]
+type = internal/memory
+format = RAM <ramp-used>
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+format-foreground = ${colors.primary}
+format-underline = ${colors.primary}
+
+
+[module/backlight]
+type = internal/xbacklight
+enable-scroll = true
+format = %{T3}%{T-} <label>
+label = %percentage%
+format-foreground = ${colors.primary}
+format-underline = ${colors.primary}
+
+
+[module/volume]
+type = internal/volume
+format-volume = %{T3}<ramp-volume>%{T-} <label-volume>
+format-muted = <label-muted>
+label-volume = %percentage%
+label-muted = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+format-volume-foreground = ${colors.primary}
+format-volume-underline = ${colors.primary}
+format-muted-foreground = ${colors.second}
+format-muted-underline = ${colors.second}
+
+
 [module/date]
 type = internal/date
 interval = 1.0
-date = %a, %e %b
+date = %%{T2}%a%%{T-} %e %b
 time = %H:%M
-label = %date% %time%
+label = %date% %{T2}%time%%{T-}
 
 
 [module/battery]
@@ -82,3 +146,27 @@ full-at = 100
 battery = BAT1
 adapter = ACAD
 poll-interval = 5
+time-format = %-H:%M
+format-charging = %{T3}<animation-charging>%{T-} <label-charging>
+format-discharging = %{T3}<ramp-capacity>%{T-} <label-discharging>
+format-full = %{T3}<ramp-capacity>%{T-} <label-full>
+label-charging = %time% (%percentage%)
+label-discharging = %time% (%percentage%)
+label-full = %percentage%
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 500
+format-charging-foreground = ${colors.primary}
+format-charging-underline = ${colors.primary}
+format-discharging-foreground = ${colors.primary}
+format-discharging-underline = ${colors.primary}
+format-full-foreground = ${colors.primary}
+format-full-underline = ${colors.primary}

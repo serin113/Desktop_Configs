@@ -19,6 +19,7 @@ $COMMAND -S android-tools \
 	python python2 \
 	python-scikit-learn \
 	python-matplotlib \
-	opencv
+	opencv \
+	python-nltk
 	
 sudo gpasswd -a $USER wireshark
