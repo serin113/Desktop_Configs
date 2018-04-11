@@ -18,10 +18,11 @@ TIMESIZE=75
 DATESIZE=$((($TIMESIZE / 5) * 3))
 
 i3lock\
-	-k\
-	--composite\
+	--force-clock\
 	-s\
 	-c $BGCOL\
+	-e\
+	--composite\
 	--time-font="$FONT"\
 	--timesize=$TIMESIZE\
 	--timestr="%H:%M"\
@@ -34,10 +35,8 @@ i3lock\
 	--datepos="x+$CMARGIN:ty"\
 	--date-align 1\
 	--datecolor=$MAINCOL\
-	--veriftext=""\
-	--wrongtext=""\
-	--verif-font="Font Awesome 5 Free"\
-	--wrong-font="Font Awesome 5 Free"\
+	--veriftext=""\
+	--wrongtext=""\
 	--verifsize=40\
 	--wrongsize=40\
 	--radius=60\

@@ -22,6 +22,7 @@ fi
 # python-matplotlib:	plotting stuff
 # opencv:				computer vision stuff
 # python-nltk:			language analysis stuff
+# bind-tools:			nslookup and other stuff
 
 $COMMAND -S android-tools \
 	flex bison \
@@ -38,6 +39,7 @@ $COMMAND -S android-tools \
 	python-scikit-learn \
 	python-matplotlib \
 	opencv \
-	python-nltk
+	python-nltk nltk-data \
+	bind-tools
 	
 sudo gpasswd -a $USER wireshark

@@ -95,6 +95,7 @@ format-underline = ${colors.primary}
 
 [module/memory]
 type = internal/memory
+interval = 1
 format = RAM <ramp-used>
 ramp-used-0 = ▁
 ramp-used-1 = ▂
@@ -143,8 +144,8 @@ label = %date% %{T2}%time%%{T-}
 [module/battery]
 type = internal/battery
 full-at = 100
-battery = BAT1
-adapter = ACAD
+battery = ${env:BAT_SOURCE:BAT1}
+adapter = ${env:BAT_ADAPTER:ACAD}
 poll-interval = 5
 time-format = %-H:%M
 format-charging = %{T3}<animation-charging>%{T-} <label-charging>
