@@ -6,3 +6,6 @@ sudo pacman -S base-devel --needed
 
 echo "Installing utilities..."
 sudo pacman -S mlocate zsh git wget nano --needed
+
+echo "Installing ntfs-3g..."
+sudo pacman -s ntfs-3g ---needed

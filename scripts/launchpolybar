@@ -9,6 +9,6 @@ BAT_ADAPTER=$(ls -1 /sys/class/power_supply/|head --lines=1)
 BAT_SOURCE=$(ls -1 /sys/class/power_supply/|tail --lines=1)
 
 xrdb -load ~/.cache/wal/colors.Xresources
-polybar -l "info" --config=$1 $2 &
+polybar -l "info" --config=$1 $2 &> polybar.log &
 
 #https://www.reddit.com/r/i3wm/comments/6lo0z0/how_to_use_polybar/djvp7ok/

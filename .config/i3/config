@@ -36,6 +36,7 @@ for_window [class="(?i)viewnior"] floating enable
 for_window [class="(?i)arandr"] floating enable, sticky enable
 for_window [class="(?i)synergy"] floating enable, sticky enable
 for_window [window_role="(?i)xfce4-terminal-dropdown"] floating enable, sticky enable
+for_window [class="(?i)virtualbox machine"] floating enable
 
 
 # help key bindings
