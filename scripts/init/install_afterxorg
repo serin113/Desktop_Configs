@@ -33,7 +33,7 @@ $COMMAND -S seahorse seahorse-nautilus
 
 echo "Installing display utilities..."
 $COMMAND -S dunst compton xorg-xrandr arandr xorg-xdpyinfo \
-unclutter-xfixes-git redshift nitrogen \
+unclutter-xfixes-git redshift nitrogen caffeine-ng \
 python-pywal gnome-font-viewer
 $COMMAND -S python-xdg --asdeps
 
