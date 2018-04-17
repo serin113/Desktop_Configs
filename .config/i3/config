@@ -172,7 +172,7 @@ exec --no-startup-id blueman-applet &
 exec --no-startup-id nm-applet &
 exec --no-startup-id clipit -d &
 exec --no-startup-id unclutter --timeout 10 --exclude-root &
-#exec --no-startup-id xrdb -load ~/.cache/wal/colors.Xresources &
+exec --no-startup-id caffeine -d &
 exec --no-startup-id redshift-gtk -l 14:121 -t 6500:2900 &
 exec --no-startup-id nitrogen --restore &
 exec --no-startup-id wal -Rn &
@@ -181,14 +181,10 @@ exec_always --no-startup-id $HOME/scripts/launchpolybar $HOME/.polybar mainbar
 
 
 # i3 color variables
-set_from_resource $bg i3wm.color0 #000000AA
-set $bg_2 #00000055
 set_from_resource $mainCol i3wm.color2 #DDDDDD
 set_from_resource $mainActiveCol i3wm.color7 #FFFFFF
 set_from_resource $secondCol i3wm.color15 #DDDDDD
-#set_from_resource $textCol i3wm.color15 #FFFFFF
 set_from_resource $textCol i3wm.color0 #000000
-#set_from_resource $inactiveTextCol i3wm.color8 #AAAAAA
 set_from_resource $inactiveTextCol i3wm.color2 #DDDDDD
 set_from_resource $mainInactiveCol i3wm.color0 #555555
 set_from_resource $urgentCol color9 #FFAAAA
@@ -198,44 +194,8 @@ set_from_resource $indInactiveCol i3wm.color0 #000000
 
 
 # i3 color setup
-client.focused          $mainCol $mainCol $textCol $indCol $mainCol
-client.focused_inactive $mainInactiveCol $mainInactiveCol $inactiveTextCol $indInactiveCol $mainInactiveCol
-client.unfocused        $mainInactiveCol $mainInactiveCol $inactiveTextCol $indInactiveCol $mainInactiveCol
+client.focused			$mainCol $mainCol $textCol $indCol $mainCol
+client.focused_inactive	$mainInactiveCol $mainInactiveCol $inactiveTextCol $indInactiveCol $mainInactiveCol
+client.unfocused		$mainInactiveCol $mainInactiveCol $inactiveTextCol $indInactiveCol $mainInactiveCol
 client.urgent			$urgentCol $urgentCol $textCol $indCol $urgentCol
-
-# # i3-bar 1
-# bar {
-# #    status_command    python $HOME/.pystatus "$mainCol" "$mainActiveCol" "$secondCol" "$inactiveTextCol" "$bg"
-#     position          top
-#     workspace_buttons yes
-#     colors {
-# 		background $bg
-# 		focused_workspace	$mainCol $mainCol $textCol
-# 		active_workspace	$mainActiveCol $mainActiveCol $textCol
-# 		inactive_workspace	$mainInactiveCol $mainInactiveCol $inactiveTextCol
-# 		urgent_workspace	$urgentCol $urgentCol $textCol
-# 		binding_mode		$bindingCol $bindingCol $textCol
-#     }
-# #	font pango:FontAwesome 10, Source Sans Pro 12
-# 	font pango:Source Sans Pro 12
-# #	font pango:FontAwesome 10, Terminus (TTF) 13
-# #	font pango:FontAwesome 10, Monofur 12
-# #	font pango:eurofurence 13
-# #	font pango:Source Sans Pro 12
-# #	font pango:Helvetica 11
-#     tray_padding 3 
-# 	separator_symbol " "
-# 	height 25
-# #	i3bar_command i3bar -t
-# #    i3bar_command i3bar
-# 	status_command polybar --config=$HOME/.polybar mainbar
-# #	tray_output none
-#     binding_mode_indicator no
-#     id top-bar
-#     mode dock
-# #	hidden_state hide
-# #	modifier $mod
-# 	binding_mode_indicator yes
-# }
-
 

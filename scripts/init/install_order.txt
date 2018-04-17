@@ -1,0 +1,10 @@
+1 - install_basics
+2 - install_trizen
+3 - install_xorg
+        - install_i3lock-onsleep
+4 - install_afterxorg
+        - git_gnome-keyring_integ
+
+optional:
+install_avatar
+install_devtools

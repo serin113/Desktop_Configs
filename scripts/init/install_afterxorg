@@ -8,6 +8,7 @@ fi
 
 echo "Installing background services..."
 $COMMAND -S clipit libinput-gestures rofi polkit-gnome
+./git-gnome-keyring_integ
 
 echo "Installing printer utilities..."
 $COMMAND -S cups cups-pdf avahi --needed
