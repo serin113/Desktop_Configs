@@ -24,8 +24,8 @@ else
 fi
 
 echo "Enabling NTP sync..."
-ntp_main = "0.asia.pool.ntp.org 1.asia.pool.ntp.org 2.asia.pool.ntp.org 3.asia.pool.ntp.org"
-ntp_fallback = "0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org"
+ntp_main="0.asia.pool.ntp.org 1.asia.pool.ntp.org 2.asia.pool.ntp.org 3.asia.pool.ntp.org"
+ntp_fallback="0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org"
 if grep "^NTP=" /etc/systemd/timesyncd.conf; then
 	sudo sed -in "s/^NTP=.*$/NTP=$ntp_main/" /etc/systemd/timesyncd.conf
 else
@@ -52,9 +52,9 @@ sudo sed -in '/^greeter-session=/s/.*/greeter-session=lightdm-webkit2-greeter/'
 sudo sed -in '/^webkit_theme/s/.*/webkit_theme\t\t= litarvan/'
 sudo systemctl enable lightdm.service
 
-echo "Installing i3 and i3pystatus dependencies..."
-$COMMAND -S i3-gaps i3pystatus-git python-pip \
-i3lock-color-git python-pytz xorg-xset python-dbus xorg-xprop polybar
+echo "Installing i3 and dependencies..."
+$COMMAND -S i3-gaps python-pip i3lock-color-git \
+xorg-xset xorg-xprop polybar
 ./install_i3lock-onsleep
 
 echo "Installing acpilight..."
