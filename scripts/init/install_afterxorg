@@ -53,7 +53,7 @@ export VISUAL="$(if [[ -n $DISPLAY ]]; then echo 'gedit'; else echo 'nano'; fi)"
 #http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 
 echo "Installing internet utilities..."
-$COMMAND -S reflector synergy vivaldi midori transmission-gtk
+$COMMAND -S reflector synergy vivaldi midori transmission-gtk tigervnc
 $COMMAND -S qt5-base --asdeps
 
 echo "Installing media applications..."
