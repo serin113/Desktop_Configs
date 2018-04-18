@@ -94,9 +94,10 @@ alias java='java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 alias search='sudo updatedb; locate'
 
 #https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-alias trizen='trizen --noedit --show-ood'
-alias trizen-edit='trizen --show-ood'
+alias trizen-edit='trizen'
+alias trizen='trizen --noedit --noinfo'
+update(){command trizen -Syu --noconfirm --noedit --noinfo --devel "$*";}
 alias pacaur='printf "Using trizen instead, mumble mumble...\n"; trizen'
 alias screenfetch='printf "Using neofetch instead, mumble mumble...\n"; neofetch'
