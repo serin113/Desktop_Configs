@@ -40,6 +40,7 @@ $COMMAND -S android-tools \
 	python-matplotlib \
 	opencv \
 	python-nltk nltk-data \
-	bind-tools
+	bind-tools \
+	aircrack-ng
 	
 sudo gpasswd -a $USER wireshark

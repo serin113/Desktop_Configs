@@ -1,18 +1,10 @@
 #!/bin/sh
-#sudo create_ap\
-#	--freq-band 2.4\
-#	--dhcp-dns 8.8.8.8,8.8.4.4\
-#	-m nat\
-#	-c 3\
-#	--ieee80211ac\
-#	--ieee80211n\
-#	wlp4s0 wlp4s0 xyzzy nanobot321
 
 sudo create_ap\
 	--freq-band 2.4\
 	-m nat\
-	--dhcp-dns 8.8.8.8,8.8.4.4\
+	--dhcp-dns 1.1.1.1,1.0.0.1\
 	--ieee80211ac\
-	-c 4\
-	--isolate-clients\
+	--country PH\
+	-g 192.168.113.1\
 	wlp4s0 wlp4s0 xyzzy nanobot321

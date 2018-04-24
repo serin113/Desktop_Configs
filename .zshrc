@@ -98,6 +98,6 @@ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias trizen-edit='trizen'
 alias trizen='trizen --noedit --noinfo'
-update(){command trizen -Syu --noconfirm --noedit --noinfo --devel "$*";}
+update(){command trizen -Syu --noconfirm --noedit --noinfo "$*";}
 alias pacaur='printf "Using trizen instead, mumble mumble...\n"; trizen'
 alias screenfetch='printf "Using neofetch instead, mumble mumble...\n"; neofetch'

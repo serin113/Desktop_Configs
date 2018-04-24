@@ -22,8 +22,8 @@ sudo systemctl restart org.cups.cupsd.service
 $COMMAND -S simple-scan --needed
 
 echo "Installing terminal utilities..."
-$COMMAND -S playerctl htop xorg-xinput xorg-xev tldr traceroute \
-neofetch
+$COMMAND -S playerctl htop xorg-xinput xorg-xev \
+tldr neofetch zsh-completions
 
 echo "Installing nautilus..."
 $COMMAND -S nautilus filemanager-actions file-roller
@@ -47,13 +47,13 @@ $COMMAND -S gtk-engine-murrine --asdeps
 
 echo "Installing tools..."
 $COMMAND -S leafpad gedit xfce4-terminal gnome-calculator \
-simplenote-electron-bin atom-editor-bin gnome-clocks scrot xclip
+simplenote-electron-bin atom-editor-bin gnome-clocks \
+scrot xclip gparted
 export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'leafpad'; else echo 'nano'; fi)"
 export VISUAL="$(if [[ -n $DISPLAY ]]; then echo 'gedit'; else echo 'nano'; fi)"
-#http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 
 echo "Installing internet utilities..."
-$COMMAND -S reflector synergy vivaldi midori transmission-gtk tigervnc
+$COMMAND -S reflector synergy vivaldi midori transmission-gtk tigervnc traceroute
 $COMMAND -S qt5-base --asdeps
 
 echo "Installing media applications..."
@@ -62,3 +62,4 @@ $COMMAND -S ffmpeg0.10 zenity --asdeps
 
 echo "Installing chat applications..."
 $COMMAND -S telegram-desktop discord
+

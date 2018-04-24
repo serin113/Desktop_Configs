@@ -14,6 +14,7 @@ MAINCOL=$(getXCol 2)$TRANS
 SECCOL=$(getXCol 15)$TRANS
 URGCOL=$(getXCol 9)$TRANS
 FONT="Source Sans Pro Light"
+ICOFONT="Font Awesome 5 Free"
 TIMESIZE=75
 DATESIZE=$((($TIMESIZE / 5) * 3))
 
@@ -35,8 +36,13 @@ i3lock\
 	--datepos="x+$CMARGIN:ty"\
 	--date-align 1\
 	--datecolor=$MAINCOL\
-	--veriftext=""\
-	--wrongtext=""\
+	--veriftext=""\
+	--verif-align=0\
+	--verif-font=$ICOFONT\
+	--wrongtext=""\
+	--wrong-align=0\
+	--wrong-font=$ICOFONT\
+	--noinputtext=""\
 	--verifsize=40\
 	--wrongsize=40\
 	--radius=60\

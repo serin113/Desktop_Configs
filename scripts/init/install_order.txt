@@ -1,10 +1,36 @@
-1 - install_basics
-2 - install_trizen
-3 - install_xorg
-        - install_i3lock-onsleep
-4 - install_afterxorg
-        - git_gnome-keyring_integ
+0	* partition:
+		* original OS		- <retain FS>
+		* Arch				- ext4
+		* common			- ntfs
+		* optional swap		- linux-swap
+	* pacstrap /mnt base
+	* genfstab -U /mnt >> /mnt/etc/fstab
+	* arch-chroot /mnt
+		* https://wiki.archlinux.org/index.php/installation_guide#Configure_the_system
+		* install:
+			- sudo
+			- dialog
+			- git
+	* create user:
+		useradd -m $username -G wheel,users
+		passwd $username
+	* add user to sudoers:
+		root ALL=(ALL) ALL
+		%wheel ALL=(ALL) ALL
+	* logout & remove root user:
+		passwd -l root
+	- migrate_config
+	
+1 	- install_basics
+		* add fstab for common partition
+			blkid -o list
+
+2 	- install_trizen
+
+3 	- install_xorg
+
+4 	- install_afterxorg
 
 optional:
-install_avatar
-install_devtools
+	- install_avatar
+	- install_devtools

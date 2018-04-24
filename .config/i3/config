@@ -171,13 +171,13 @@ exec --no-startup-id $HOME/scripts/launchdunst &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id nm-applet &
 exec --no-startup-id clipit -d &
-exec --no-startup-id unclutter --timeout 10 --exclude-root &
+exec --no-startup-id unclutter --timeout 30 --exclude-root --ignore-scrolling &
 exec --no-startup-id caffeine -d &
 exec --no-startup-id redshift-gtk -l 14:121 -t 6500:2900 &
 exec --no-startup-id nitrogen --restore &
 exec --no-startup-id wal -Rn &
 #exec --no-startup-id hardcode-tray --conversion-tool RSVGConvert --size 22 --theme Papirus -a &
-exec_always --no-startup-id $HOME/scripts/launchpolybar $HOME/.polybar mainbar
+exec_always --no-startup-id $HOME/scripts/launchpolybar $HOME/.polybar mainbar &
 
 
 # i3 color variables

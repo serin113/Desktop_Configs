@@ -54,11 +54,12 @@ sudo systemctl enable lightdm.service
 
 echo "Installing i3 and dependencies..."
 $COMMAND -S i3-gaps python-pip i3lock-color-git \
-xorg-xset xorg-xprop polybar
+xorg-xset xorg-xprop polybar jsoncpp
 ./install_i3lock-onsleep
 
 echo "Installing acpilight..."
 $COMMAND -S acpilight
+sudo gpasswd -a $USER video
 
 echo "Installing pulseaudio..."
 $COMMAND -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils pavucontrol
@@ -77,6 +78,7 @@ fi
 echo "Installing script dependencies..."
 $COMMAND -S pkgfile zsh-autosuggestions \
 zsh-history-substring-search zsh-syntax-highlighting
+
 echo "Installing fonts..."
 $COMMAND -S adobe-source-code-pro-fonts \
 adobe-source-sans-pro-fonts ttf-font-awesome
@@ -93,3 +95,4 @@ echo "Installing ufw..."
 $COMMAND -S ufw gufw
 sudo ufw enable
 sudo systemctl enable ufw
+

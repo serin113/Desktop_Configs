@@ -1,0 +1,66 @@
+echo "#
+# /etc/pacman.conf
+#
+# See the pacman.conf(5) manpage for option and repository directives
+
+[options]
+#RootDir     = /
+#DBPath      = /var/lib/pacman/
+#CacheDir    = /var/cache/pacman/pkg/
+#LogFile     = /var/log/pacman.log
+#GPGDir      = /etc/pacman.d/gnupg/
+#HookDir     = /etc/pacman.d/hooks/
+HoldPkg     = pacman glibc
+XferCommand = /usr/bin/curl -C - -f %u > %o
+#CleanMethod = KeepInstalled
+#UseDelta    = 0.7
+Architecture = auto
+
+#IgnorePkg   =
+#IgnoreGroup =
+
+#NoUpgrade   =
+#NoExtract   =
+
+# Misc options
+#UseSyslog
+Color
+TotalDownload
+CheckSpace
+#ILoveCandy
+#VerbosePkgLists
+
+SigLevel    = Required DatabaseOptional
+LocalFileSigLevel = Optional
+
+#[testing]
+#Include = /etc/pacman.d/mirrorlist
+
+[herecura]
+Server = http://repo.herecura.be/herecura/x86_64
+
+[core]
+Include = /etc/pacman.d/mirrorlist
+
+[extra]
+Include = /etc/pacman.d/mirrorlist
+
+#[community-testing]
+#Include = /etc/pacman.d/mirrorlist
+
+[community]
+Include = /etc/pacman.d/mirrorlist
+
+#[multilib-testing]
+#Include = /etc/pacman.d/mirrorlist
+
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+
+#[repo-ck]
+#Server = http://repo-ck.com/$arch" > .temp
+
+sudo mv .temp /etc/pacman.conf
+sudo pacman-key --init
+sudo pacman-key --populate archlinux
+
