@@ -56,7 +56,7 @@ bindsym $mod+Shift+Print --release exec "$HOME/scripts/scrot_noprompt"
 #bindcode 135 exec --no-startup-id i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] focus' &&\
 #	xfce4-terminal --drop-down &&\
 #	i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] move down 33 px'
-bindcode 135 exec --no-startup-id xfce4-terminal --drop-down
+#bindcode 135 exec --no-startup-id xfce4-terminal --drop-down
 bindcode $mod+59 exec --no-startup-id xfce4-terminal --drop-down
 bindsym $mod+d --release exec $HOME/scripts/rofi-run
 bindsym $mod+Tab --release exec $HOME/scripts/rofi-win
@@ -176,6 +176,7 @@ exec --no-startup-id caffeine -d &
 exec --no-startup-id redshift-gtk -l 14:121 -t 6500:2900 &
 exec --no-startup-id nitrogen --restore &
 exec --no-startup-id wal -Rn &
+exec --no-startup-id tilda &
 #exec --no-startup-id hardcode-tray --conversion-tool RSVGConvert --size 22 --theme Papirus -a &
 exec_always --no-startup-id $HOME/scripts/launchpolybar $HOME/.polybar mainbar &
 

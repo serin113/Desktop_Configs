@@ -6,23 +6,24 @@ if pacman -Qsq trizen ; then
 	COMMAND="trizen --noedit --noinfo --needed"
 fi
 
-# android-tools:		adb stuff
-# flex+bison:			interpreter/compiler stuff
-# gcc+valgrind:			C/C++ compile and debug
-# gcc-fortran:			fortran compile
-# jdk8-openjdk:			java stuff
-# qemu:					OS VM stuff
-# racket+raacket-docs:	racket stuff
-# swi-prolog:			prolog interpreter
-# wireshark-gtk:		packet capture stuff
-# octave:				matlab-like
-# nodejs+electron:		app dev stuff
-# python python2:		python base
-# python-scikit-learn:	machine learning stuff
-# python-matplotlib:	plotting stuff
-# opencv:				computer vision stuff
-# python-nltk:			language analysis stuff
-# bind-tools:			nslookup and other stuff
+# android-tools:			adb stuff
+# flex+bison:				interpreter/compiler stuff
+# gcc+valgrind:				C/C++ compile and debug
+# gcc-fortran:				fortran compile
+# jdk8-openjdk:				java stuff
+# qemu:						OS VM stuff
+# racket+raacket-docs:		racket stuff
+# swi-prolog:				prolog interpreter
+# wireshark-gtk:			packet capture stuff
+# octave:					matlab-like
+# nodejs+electron:			app dev stuff
+# python+python2:			python base
+# python-scikit-learn:		machine learning stuff
+# python-matplotlib:		plotting stuff
+# opencv:					computer vision stuff
+# python-nltk+nltk-data:	language analysis stuff
+# bind-tools:				nslookup and other stuff
+# aircrack-ng:				network monitoring
 
 $COMMAND -S android-tools \
 	flex bison \
@@ -41,6 +42,11 @@ $COMMAND -S android-tools \
 	opencv \
 	python-nltk nltk-data \
 	bind-tools \
-	aircrack-ng
+	aircrack-ng \
+	kaggle-api \
+	arduino arduino-docs arduino-avr-core
 	
 sudo gpasswd -a $USER wireshark
+sudo gpasswd -a $USER uucp
+sudo gpasswd -a $USER lock
+echo "cdc_acm" | sudo tee /etc/modules-load.d/cdc_acm.conf > /dev/null

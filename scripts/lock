@@ -37,9 +37,11 @@ i3lock\
 	--date-align 1\
 	--datecolor=$MAINCOL\
 	--veriftext=""\
+	--verifpos="w/2:h/2"\
 	--verif-align=0\
 	--verif-font=$ICOFONT\
 	--wrongtext=""\
+	--wrongpos="w/2:h/2"\
 	--wrong-align=0\
 	--wrong-font=$ICOFONT\
 	--noinputtext=""\

@@ -23,7 +23,7 @@ $COMMAND -S simple-scan --needed
 
 echo "Installing terminal utilities..."
 $COMMAND -S playerctl htop xorg-xinput xorg-xev \
-tldr neofetch zsh-completions
+tldr neofetch zsh-completions archnews
 
 echo "Installing nautilus..."
 $COMMAND -S nautilus filemanager-actions file-roller
