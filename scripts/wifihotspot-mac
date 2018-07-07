@@ -1,0 +1,10 @@
+#!/bin/sh
+
+sudo create_ap\
+	--freq-band 2.4\
+	-m nat\
+	--dhcp-dns 1.1.1.1,1.0.0.1\
+	--ieee80211ac\
+	--country PH\
+	-g 192.168.113.1\
+	wlp3s0 wlp3s0 xyzzy nanobot321

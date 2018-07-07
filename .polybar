@@ -29,7 +29,7 @@ tray-position = right
 tray-maxsize = 20
 tray-detached = false
 padding-right = 6
-modules-left = i3
+modules-left = i3 player-mpris-tail
 modules-center = title
 modules-right = cpu memory backlight volume battery date
 module-margin = 3
@@ -175,3 +175,10 @@ format-discharging-foreground = ${colors.primary}
 format-discharging-underline = ${colors.primary}
 format-full-foreground = ${colors.primary}
 format-full-underline = ${colors.primary}
+
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.polybar-scripts/player-mpris-tail.py
+tail = true
+format-foreground = ${colors.primary}
+format-underline = ${colors.primary}

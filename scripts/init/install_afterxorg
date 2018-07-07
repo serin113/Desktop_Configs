@@ -23,10 +23,10 @@ $COMMAND -S simple-scan --needed
 
 echo "Installing terminal utilities..."
 $COMMAND -S playerctl htop xorg-xinput xorg-xev \
-tldr neofetch zsh-completions archnews
+tldr neofetch zsh-completions archnews2
 
 echo "Installing nautilus..."
-$COMMAND -S nautilus filemanager-actions file-roller
+$COMMAND -S nautilus filemanager-actions file-roller p7zip
 
 echo "Installing seahorse..."
 $COMMAND -S seahorse seahorse-nautilus
@@ -34,7 +34,7 @@ $COMMAND -S seahorse seahorse-nautilus
 echo "Installing display utilities..."
 $COMMAND -S dunst compton xorg-xrandr arandr xorg-xdpyinfo \
 unclutter-xfixes-git redshift nitrogen caffeine-ng \
-python-pywal gnome-font-viewer
+python-pywal gnome-font-viewer cheese
 
 echo "Installing pkgbrowser..."
 $COMMAND -S pkgbrowser

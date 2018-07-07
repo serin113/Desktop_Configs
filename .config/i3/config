@@ -23,7 +23,7 @@ new_window pixel 3
 hide_edge_borders smart
 focus_follows_mouse yes
 focus_on_window_activation urgent
-floating_maximum_size 1900 x 1060
+#floating_maximum_size 1900 x 1060
 
 
 # window rules
@@ -31,6 +31,8 @@ floating_maximum_size 1900 x 1060
 no_focus [tiling]
 for_window [class=".*"] border pixel 3
 for_window [class="(?i)nm-connection-editor"] floating enable, sticky enable
+for_window [class="(?i)wicd-client.py"] floating enable, sticky enable
+for_window [class="(?i)pavucontrol"] floating enable, sticky enable
 for_window [class="(?i)blueman-manager"] floating enable, sticky enable
 for_window [class="(?i)viewnior"] floating enable
 for_window [class="(?i)arandr"] floating enable, sticky enable
@@ -53,6 +55,7 @@ bindsym $mod+F12 --release exec notify-send "Summary" "Body"
 bindsym $mod+Shift+F12 --release exec notify-send -u critical "Summary" "Body"
 bindsym $mod+Print --release exec "$HOME/scripts/scrot"
 bindsym $mod+Shift+Print --release exec "$HOME/scripts/scrot_noprompt"
+bindsym $mod+Shift+P --release exec "$HOME/scripts/scrot_noprompt"
 #bindcode 135 exec --no-startup-id i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] focus' &&\
 #	xfce4-terminal --drop-down &&\
 #	i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] move down 33 px'
@@ -96,6 +99,7 @@ mode "$mode_system" {
     bindsym $mod+Shift+e mode "default"
 }
 bindsym $mod+Shift+e mode "$mode_system"
+bindsym XF86PowerOff exec zenity --question --text "Shut down?" --default-cancel && shutdown now
 
 
 # i3 control key bindings
@@ -169,7 +173,8 @@ exec --no-startup-id export SSH_AUTH_SOCK &
 exec --no-startup-id compton --config "$HOME/.compton" &
 exec --no-startup-id $HOME/scripts/launchdunst &
 exec --no-startup-id blueman-applet &
-exec --no-startup-id nm-applet &
+#exec --no-startup-id nm-applet &
+exec --no-startup-id wicd-gtk -t &
 exec --no-startup-id clipit -d &
 exec --no-startup-id unclutter --timeout 30 --exclude-root --ignore-scrolling &
 exec --no-startup-id caffeine -d &

@@ -35,7 +35,7 @@ $COMMAND -S android-tools \
 	swi-prolog \
 	wireshark-gtk \
 	octave \
-	nodejs electron \
+	nodejs electron npm \
 	python python2 \
 	python-scikit-learn \
 	python-matplotlib \
@@ -44,7 +44,8 @@ $COMMAND -S android-tools \
 	bind-tools \
 	aircrack-ng \
 	kaggle-api \
-	arduino arduino-docs arduino-avr-core
+	arduino arduino-docs arduino-avr-core \
+	ruby rubygems sqlite ruby-bundler
 	
 sudo gpasswd -a $USER wireshark
 sudo gpasswd -a $USER uucp

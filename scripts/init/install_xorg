@@ -46,11 +46,11 @@ sudo timedatectl set-ntp true
 echo "Installing xorg..."
 $COMMAND -S xorg-server
 
-echo "Installing lightdm..."
-$COMMAND -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-litarvan
-sudo sed -in '/^greeter-session=/s/.*/greeter-session=lightdm-webkit2-greeter/'
-sudo sed -in '/^webkit_theme/s/.*/webkit_theme\t\t= litarvan/'
-sudo systemctl enable lightdm.service
+#echo "Installing lightdm..."
+#$COMMAND -S lightdm lightdm-webkit2-greeter lightdm-webkit-theme-litarvan
+#sudo sed -in '/^greeter-session=/s/.*/greeter-session=lightdm-webkit2-greeter/' /etc/lightdm/lightdm.conf
+#sudo sed -in '/^webkit_theme/s/.*/webkit_theme\t\t= litarvan/' /etc/lightdm/lightdm-webkit2-greeter.conf
+#sudo systemctl enable lightdm.service
 
 echo "Installing i3 and dependencies..."
 $COMMAND -S i3-gaps python-pip i3lock-color-git \
@@ -65,15 +65,15 @@ echo "Installing pulseaudio..."
 $COMMAND -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils pavucontrol
 
 echo "Installing bluetooth and network GUIs..."
-$COMMAND -S blueman bluez-utils networkmanager network-manager-applet
-$COMMAND -S bluez --asdeps
-sudo systemctl enable NetworkManager.service
-sudo systemctl enable NetworkManager-wait-online.service
-if ! grep "\[connectivity\]" /etc/NetworkManager/NetworkManager.conf ; then
-	echo "\n[connectivity]\nuri=\n" | sudo tee -a /etc/NetworkManager/NetworkManager.conf > /dev/null
-else
-	sudo sed -in 's/uri=.*$/uri=/' /etc/NetworkManager/NetworkManager.conf
-fi
+$COMMAND -S blueman bluez-utils wicd wicd-gtk
+$COMMAND -S bluez gksu python2-notify --asdeps
+sudo systemctl enable wicd.service
+#if ! grep "\[connectivity\]" /etc/NetworkManager/NetworkManager.conf ; then
+#	printf "\n[connectivity]\nuri=\n" | sudo tee -a 
+#/etc/NetworkManager/NetworkManager.conf > /dev/null
+#else
+#	sudo sed -in 's/uri=.*$/uri=/' /etc/NetworkManager/NetworkManager.conf
+#fi
 
 echo "Installing script dependencies..."
 $COMMAND -S pkgfile zsh-autosuggestions \
