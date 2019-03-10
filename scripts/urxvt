@@ -1,0 +1,5 @@
+#!/bin/sh
+
+urxvt -depth 32 -fn "xft:Source Code Pro:pixelsize=16" \
+-fb "xft:Source Code Pro Bold:pixelsize=15" \
++sb -vb -sk -sw -si -bc -uc -sl 1000

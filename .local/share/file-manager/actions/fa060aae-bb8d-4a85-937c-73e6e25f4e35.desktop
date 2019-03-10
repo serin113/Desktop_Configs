@@ -14,10 +14,14 @@ Profiles=profile-zero;
 
 TargetContext=false
 
+Name[en_US]=Open Terminal
+Icon[en_US]=gnome-terminal
+ToolbarLabel[en_US]=Open Terminal
+
 [X-Action-Profile profile-zero]
-Exec=xfce4-terminal --working-directory=%f 
+Exec=xfce4-terminal --working-directory %f
 Name[en_PH]=Default profile
 Name[en]=Default profile
 Name[C]=Default profile
-Path=%D
-ExecutionMode=Terminal
+Path=%f
+Name[en_US]=Default profile

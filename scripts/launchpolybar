@@ -2,13 +2,14 @@
 
 killall -q polybar
 
+rm polybar.log
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 monitor=$(polybar -m|tail -1|sed -e 's/:.*$//g')
 bat_adapter=$(ls -1 /sys/class/power_supply/|head --lines=1)
 bat_source=$(ls -1 /sys/class/power_supply/|tail --lines=1)
 
-xrdb -load ~/.cache/wal/colors.Xresources
+xrdb -merge ~/.cache/wal/colors.Xresources
 MONITOR=$monitor BAT_ADAPTER=$bat_adapter BAT_SOURCE=$bat_source \
 polybar -l "info" --config=$1 $2 &> polybar.log &
 

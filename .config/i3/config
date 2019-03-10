@@ -6,9 +6,9 @@ set $mod Mod4
 
 
 # gaps
-gaps inner 10
+gaps inner 20
 gaps outer 0
-smart_gaps on
+#smart_gaps on
 smart_borders no_gaps
 bindsym $mod+u gaps inner current plus 5
 bindsym $mod+i gaps inner current set 10
@@ -19,8 +19,8 @@ bindsym $mod+Shift+o gaps outer current minus 5
 
 
 # window properties
-new_window pixel 3
-hide_edge_borders smart
+new_window pixel 6
+hide_edge_borders smart_no_gaps
 focus_follows_mouse yes
 focus_on_window_activation urgent
 #floating_maximum_size 1900 x 1060
@@ -29,16 +29,21 @@ focus_on_window_activation urgent
 # window rules
 # fix for stolen focus on opening new window
 no_focus [tiling]
+for_window [window_type="dialog"] floating enable
+for_window [window_type="splash"] floating enable
+for_window [window_type="notification"] floating enable
 for_window [class=".*"] border pixel 3
 for_window [class="(?i)nm-connection-editor"] floating enable, sticky enable
 for_window [class="(?i)wicd-client.py"] floating enable, sticky enable
 for_window [class="(?i)pavucontrol"] floating enable, sticky enable
+#for_window [class="(?i)steam"] floating enable
 for_window [class="(?i)blueman-manager"] floating enable, sticky enable
 for_window [class="(?i)viewnior"] floating enable
 for_window [class="(?i)arandr"] floating enable, sticky enable
 for_window [class="(?i)synergy"] floating enable, sticky enable
 for_window [window_role="(?i)xfce4-terminal-dropdown"] floating enable, sticky enable
 for_window [class="(?i)virtualbox machine"] floating enable
+for_window [class="(?i)telegramdesktop" title="(?i)media viewer"] fullscreen
 
 
 # help key bindings
@@ -56,14 +61,18 @@ bindsym $mod+Shift+F12 --release exec notify-send -u critical "Summary" "Body"
 bindsym $mod+Print --release exec "$HOME/scripts/scrot"
 bindsym $mod+Shift+Print --release exec "$HOME/scripts/scrot_noprompt"
 bindsym $mod+Shift+P --release exec "$HOME/scripts/scrot_noprompt"
+bindcode 135 exec  --no-startup-id xfce4-terminal --drop-down
 #bindcode 135 exec --no-startup-id i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] focus' &&\
 #	xfce4-terminal --drop-down &&\
 #	i3-msg '[window_role="(?i)xfce4-terminal-dropdown"] move down 33 px'
 #bindcode 135 exec --no-startup-id xfce4-terminal --drop-down
 bindcode $mod+59 exec --no-startup-id xfce4-terminal --drop-down
+#bindcode 135 exec --no-startup-id guake -t
+#bindcode $mod+59 exec --no-startup-id guake -t
 bindsym $mod+d --release exec $HOME/scripts/rofi-run
 bindsym $mod+Tab --release exec $HOME/scripts/rofi-win
-bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec urxvt
 
 
 # system control key bindings
@@ -83,6 +92,10 @@ bindsym $mod+Mod1+c exec playerctl play-pause
 bindsym $mod+Mod1+v exec playerctl next
 bindsym $mod+Mod1+f exec playerctl previous
 bindsym $mod+Mod1+d exec playerctl stop
+bindsym $mod+Alt_L+c exec playerctl play-pause
+bindsym $mod+Alt_L+v exec playerctl next
+bindsym $mod+Alt_L+f exec playerctl previous
+bindsym $mod+Alt_L+d exec playerctl stop
 # https://www.reddit.com/r/i3wm/comments/2yniv1/i3wm_and_power_management/cpci2wn/
 set $mode_system (l) lock, (Shift+l) logout, (s) suspend, (Shift+r) reboot, (Shift+p) shutdown
 mode "$mode_system" {
@@ -166,22 +179,24 @@ bindsym $mod+Shift+r restart
 
 # startup programs
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id gnome-keyring-daemon --start &
+exec --no-startup-id eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) &
+exec --no-startup-id export SSH_AUTH_SOCK &
 exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Device Enabled" 1 &
 exec --no-startup-id libinput-gestures-setup start &
-exec --no-startup-id export SSH_AUTH_SOCK &
+exec --no-startup-id guake -t &
 exec --no-startup-id compton --config "$HOME/.compton" &
-exec --no-startup-id $HOME/scripts/launchdunst &
+#exec --no-startup-id $HOME/scripts/launchdunst &
+exec --no-startup-id volctl &
 exec --no-startup-id blueman-applet &
 #exec --no-startup-id nm-applet &
 exec --no-startup-id wicd-gtk -t &
 exec --no-startup-id clipit -d &
-exec --no-startup-id unclutter --timeout 30 --exclude-root --ignore-scrolling &
+#exec --no-startup-id unclutter --timeout 30 --exclude-root --ignore-scrolling &
 exec --no-startup-id caffeine -d &
-exec --no-startup-id redshift-gtk -l 14:121 -t 6500:2900 &
+exec --no-startup-id redshift-gtk -l 14:121 -t 6500:4500 &
 exec --no-startup-id nitrogen --restore &
 exec --no-startup-id wal -Rn &
-exec --no-startup-id tilda &
+#exec --no-startup-id tilda &
 #exec --no-startup-id hardcode-tray --conversion-tool RSVGConvert --size 22 --theme Papirus -a &
 exec_always --no-startup-id $HOME/scripts/launchpolybar $HOME/.polybar mainbar &
 

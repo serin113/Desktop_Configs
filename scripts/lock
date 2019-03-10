@@ -4,17 +4,17 @@ getXCol () {
 #	echo	$(xrdb -query |
 #			grep "*color$1:.*#" |
 #			cut -d"#" -f2)
-	echo $(sed "$(($1+1))q;d" $HOME/.cache/wal/colors)
+	echo $(sed "$(($1+1))q;d" $HOME/.cache/wal/colors | cut -d"#" -f2)
 }
 
-CMARGIN=100
+CMARGIN=200
 BGCOL=$(getXCol 0)
 TRANS="FF"
 MAINCOL=$(getXCol 2)$TRANS
 SECCOL=$(getXCol 15)$TRANS
 URGCOL=$(getXCol 9)$TRANS
-FONT="Source Sans Pro Light"
-ICOFONT="Font Awesome 5 Free"
+FONT="eurofurence"
+ICOFONT="Font Awesome 5 Free:style=Solid"
 TIMESIZE=75
 DATESIZE=$((($TIMESIZE / 5) * 3))
 
@@ -24,39 +24,39 @@ i3lock\
 	-c $BGCOL\
 	-e\
 	--composite\
+	--radius=100\
+	--ring-width=20\
 	--time-font="$FONT"\
 	--timesize=$TIMESIZE\
 	--timestr="%H:%M"\
 	--timepos="x+w-$CMARGIN:y+h-$CMARGIN"\
 	--time-align 2\
-	--timecolor=$MAINCOL\
+	--timecolor="$MAINCOL"\
 	--date-font="$FONT"\
 	--datesize=$DATESIZE\
 	--datestr="%a, %e %b %Y"\
 	--datepos="x+$CMARGIN:ty"\
 	--date-align 1\
-	--datecolor=$MAINCOL\
-	--veriftext=""\
-	--verifpos="w/2:h/2"\
+	--datecolor="$MAINCOL"\
+	--verifpos="w/2:h/2+15"\
 	--verif-align=0\
-	--verif-font=$ICOFONT\
-	--wrongtext=""\
-	--wrongpos="w/2:h/2"\
-	--wrong-align=0\
-	--wrong-font=$ICOFONT\
-	--noinputtext=""\
+	--verifcolor="$URGCOL"\
+	--verif-font="$ICOFONT"\
 	--verifsize=40\
+	--veriftext=""\
+	--wrongpos="w/2:h/2+15"\
+	--wrong-align=0\
+	--wrongcolor="$URGCOL"\
+	--wrong-font="$ICOFONT"\
 	--wrongsize=40\
-	--radius=60\
-	--ring-width=20\
-	--verifcolor=$URGCOL\
-	--wrongcolor=$URGCOL\
-	--separatorcolor=$BGCOL$TRANS\
-	--keyhlcolor=$SECCOL\
-	--bshlcolor=$URGCOL\
-	--ringcolor=$MAINCOL\
-	--ringvercolor=$URGCOL\
-	--ringwrongcolor=$URGCOL\
+	--wrongtext=""\
+	--noinputtext="-"\
+	--separatorcolor="$BGCOL$TRANS"\
+	--keyhlcolor="$SECCOL"\
+	--bshlcolor="$URGCOL"\
+	--ringcolor="$MAINCOL"\
+	--ringvercolor="$URGCOL"\
+	--ringwrongcolor="$URGCOL"\
 	--insidecolor="00000000"\
 	--insidevercolor="00000000"\
 	--insidewrongcolor="00000000"

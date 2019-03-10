@@ -1,5 +1,7 @@
-#!/bin/bash
+#!/bin/zsh
 #rofi -font 'Source Code Pro Semibold 13' -show drun -modi 'drun,run' -sidebar-mode -theme-str "#window {location:north;y-offset:25;padding:3px;}"
 #rofi -font 'Source Code Pro Semibold 13' -show drun -modi 'drun,run' -sidebar-mode -theme ~/.cache/wal/colors-rofi-light.rasi
-rofi -font 'Source Code Pro Semibold 13' -show drun -theme ~/.cache/wal/colors-rofi-dark.rasi \
-	-sort -no-disable-history -show-icons -scroll-method 1
+dpi=$(xrdb -query | grep -Eo "dpi:(\s)*[0-9]*" | cut -c 6-)
+rofi -font 'Source Code Pro Semibold 15' -show drun -theme ~/.cache/wal/colors-rofi-dark.rasi \
+	-sort -levenshtein-sort -no-disable-history -show-icons -scroll-method 1 -tokenize -dpi 
+$dpi

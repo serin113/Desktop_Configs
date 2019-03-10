@@ -1,10 +1,10 @@
-cat $HOME/.cache/wal/sequences
+#cat $HOME/.cache/wal/sequences
 
 autoload -Uz run-help
 autoload -Uz run-help-git
 autoload -Uz run-help-svn
 autoload -Uz run-help-sudo
-autoload -Uz run-help-ip
+#autoload -Uz run-help-ip
 #autoload -Uz run-help-svk
 unalias run-help
 alias help=run-help
@@ -24,6 +24,8 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
 
 setopt complete_in_word
 setopt always_to_end
@@ -34,7 +36,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 ZSH_AUTOSUGGEST_ORIGINAL_WIDGET_PREFIX=autosuggest-orig-
-ZSH_AUTOSUGGEST_STRATEGY=default
+#ZSH_AUTOSUGGEST_STRATEGY=default
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
 	history-search-forward
 	history-search-backward
@@ -88,6 +90,17 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias diff='diff --color=auto'
+
+export LESS=-R
+export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
+export LESS_TERMCAP_md=$'\E[1;36m'     # begin blink
+export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+
 alias xyzzy='echo Nothing happens.'
 alias java='java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
@@ -96,8 +109,13 @@ alias search='sudo updatedb; locate'
 #https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-alias trizen-edit='trizen'
-alias trizen='trizen --noedit --noinfo'
-update(){command trizen -Syu --noconfirm --noedit --noinfo "$*";}
-alias pacaur='printf "Using trizen instead, mumble mumble...\n"; trizen'
+#alias trizen-edit='trizen'
+#alias trizen='trizen --noedit --noinfo'
+alias yay='yay --noeditmenu --nodiffmenu --sudoloop'
+alias update='yay -Syu --noconfirm --noeditmenu --nodiffmenu --sudoloop'
+alias pacaur='printf "Using yay instead, mumble mumble...\n"; yay'
+alias trizen='printf "Using yay instead, mumble mumble...\n"; yay'
 alias screenfetch='printf "Using neofetch instead, mumble mumble...\n"; neofetch'
+
+(cat ~/.cache/wal/sequences &)
+#source ~/.cache/wal/colors-tty.sh
